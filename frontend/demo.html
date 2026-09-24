@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus Coin - Demo</title>
+</head>
+<body>
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+
+  <h2>Transactions</h2>
+  <button onclick="loadTransactions()">Load Transactions</button>
+  <ul id="txnList"></ul>
+
+  <script>
+    const BASE = "http://localhost/campus_coin/backend/";
+
+    function login() {
+      fetch(BASE + "auth/login.php", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value
+        })
+      })
+      .then(res => res.json())
+      .then(data => alert(JSON.stringify(data)));
+    }
+
+    function loadTransactions() {
+      fetch(BASE + "transactions/get_transactions.php", {
+        credentials: "include"
+      })
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById("txnList");
+        list.innerHTML = "";
+        if (data.success) {
+          data.transactions.forEach(t => {
+            const li = document.createElement("li");
+            li.textContent = `${t.txn_date} | ${t.category_name} | Rs. ${t.amount} (${t.type})`;
+            list.appendChild(li);
+          });
+        } else {
+          list.innerHTML = "<li>" + data.message + "</li>";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
