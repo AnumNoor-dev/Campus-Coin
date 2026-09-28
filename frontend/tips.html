@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Campus Coin | Saving Tips</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/tips.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+
+<body class="dashboard-body">
+
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-mark">$</div>
+
+      <div>
+        <strong>Campus Coin</strong>
+        <span>Student Finance</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="transactions.html" class="nav-item">
+        <span class="nav-icon">↕</span>
+        <span>Transactions</span>
+      </a>
+
+      <a href="reports.html" class="nav-item">
+        <span class="nav-icon">⌁</span>
+        <span>Analytics</span>
+      </a>
+
+      <a href="budgets.html" class="nav-item">
+        <span class="nav-icon">◎</span>
+        <span>Budgets</span>
+      </a>
+
+      <a href="tips.html" class="nav-item active">
+        <span class="nav-icon">✦</span>
+        <span>Saving Tips</span>
+      </a>
+
+      <a href="bookmarks.html" class="nav-item">
+        <span class="nav-icon">◇</span>
+        <span>Saved</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">○</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="sidebar-message">
+        <span>✦</span>
+
+        <div>
+          <strong>Small wins add up</strong>
+          <p>Smart habits can make student money go further.</p>
+        </div>
+      </div>
+
+      <button
+        class="sidebar-logout"
+        id="logoutButton"
+        type="button"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main class="dashboard-main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="mobile-menu"
+          id="mobileMenuButton"
+          type="button"
+        >
+          ☰
+        </button>
+
+        <div class="search-box">
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="tipSearch"
+            placeholder="Search your saving tips..."
+          >
+
+          <kbd>⌘ K</kbd>
+        </div>
+
+      </div>
+
+      <div class="topbar-actions">
+
+        <button
+          class="topbar-icon"
+          id="themeToggle"
+          type="button"
+        >
+          ☼
+        </button>
+
+        <button
+          class="topbar-icon notification-button"
+          type="button"
+        >
+          ♢
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="user-menu">
+
+          <div class="user-avatar" id="userAvatar">
+            CU
+          </div>
+
+          <div class="user-menu-copy">
+            <strong id="topbarUserName">
+              Student
+            </strong>
+
+            <span>Campus Coin User</span>
+          </div>
+
+          <span class="user-chevron">⌄</span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="dashboard-content tips-content">
+
+      <section class="tips-heading">
+
+        <div>
+
+          <div class="dashboard-breadcrumb">
+            Dashboard / Saving Tips
+          </div>
+
+          <h1>
+            Smarter ways to save
+            <span>✦</span>
+          </h1>
+
+          <p>
+            Personalized ideas based on your spending habits,
+            budgets and recent activity.
+          </p>
+
+        </div>
+
+        <a
+          href="budgets.html"
+          class="btn dashboard-add-button"
+        >
+          <span>◎</span>
+          Manage Budget
+        </a>
+
+      </section>
+
+
+      <section class="tips-summary-grid">
+
+        <article class="tip-summary-card">
+
+          <div class="tip-summary-icon">✦</div>
+
+          <div>
+            <span>Active Tips</span>
+            <strong id="activeTipsCount">0</strong>
+          </div>
+
+          <small>Personalized for you</small>
+
+        </article>
+
+
+        <article class="tip-summary-card">
+
+          <div class="tip-summary-icon saving">↗</div>
+
+          <div>
+            <span>Saving Potential</span>
+            <strong id="savingPotential">Rs. 0</strong>
+          </div>
+
+          <small>Estimated monthly impact</small>
+
+        </article>
+
+
+        <article class="tip-summary-card">
+
+          <div class="tip-summary-icon pinned">◇</div>
+
+          <div>
+            <span>Pinned</span>
+            <strong id="pinnedCount">0</strong>
+          </div>
+
+          <small>Tips worth remembering</small>
+
+        </article>
+
+      </section>
+
+
+      <section class="featured-tip" id="featuredTip">
+
+        <div class="featured-tip-glow"></div>
+
+        <div class="featured-tip-header">
+
+          <span class="featured-badge">
+            ✦ Best opportunity
+          </span>
+
+          <span class="featured-impact" id="featuredImpact">
+            Smart saving
+          </span>
+
+        </div>
+
+        <div class="featured-tip-content">
+
+          <div class="featured-icon">
+            ✦
+          </div>
+
+          <div>
+
+            <span class="section-kicker">
+              CAMPUS COIN RECOMMENDS
+            </span>
+
+            <h2 id="featuredTitle">
+              Building your personalized tips
+            </h2>
+
+            <p id="featuredText">
+              Add a few transactions and Campus Coin will identify
+              useful saving opportunities for you.
+            </p>
+
+          </div>
+
+        </div>
+
+      <div class="featured-actions">
+
+  <button
+    class="featured-pin-button"
+    id="featuredPinButton"
+    type="button"
+    disabled
+  >
+    ◇ Pin this tip
+  </button>
+
+
+  <button
+    class="featured-save-button"
+    id="featuredSaveButton"
+    type="button"
+    disabled
+  >
+    ◇ Save
+  </button>
+
+
+  <button
+    class="featured-dismiss-button"
+    id="featuredDismissButton"
+    type="button"
+    disabled
+  >
+    Dismiss
+  </button>
+
+</div>
+      </section>
+
+
+      <section class="tips-section">
+
+        <div class="tips-section-header">
+
+          <div>
+            <span class="section-kicker">
+              RECOMMENDED FOR YOU
+            </span>
+
+            <h2>Your saving opportunities</h2>
+          </div>
+
+          <div class="tips-filter-tabs">
+
+            <button
+              class="tips-filter active"
+              data-filter="all"
+              type="button"
+            >
+              All
+            </button>
+
+            <button
+              class="tips-filter"
+              data-filter="high"
+              type="button"
+            >
+              High Impact
+            </button>
+
+            <button
+              class="tips-filter"
+              data-filter="pinned"
+              type="button"
+            >
+              Pinned
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="tips-grid" id="tipsGrid">
+
+          <div class="tips-loading">
+
+            <div class="tips-loader"></div>
+
+            <strong>Looking for saving opportunities...</strong>
+
+            <span>
+              Campus Coin is checking your spending patterns.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="tip-habit-card">
+
+        <div class="habit-icon">
+          ◎
+        </div>
+
+        <div>
+          <span class="section-kicker">
+            STUDENT MONEY HABIT
+          </span>
+
+          <h2>Small changes are easier to keep</h2>
+
+          <p>
+            Pick one realistic saving action first. Once it becomes
+            part of your routine, move to the next opportunity.
+          </p>
+        </div>
+
+        <a href="reports.html">
+          View analytics →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<div class="tip-toast" id="tipToast">
+  <span id="tipToastIcon">✓</span>
+  <span id="tipToastText">Tip updated</span>
+</div>
+
+
+<script src="js/tips.js"></script>
+<script src="js/shared-ui.js"></script>
+
+</body>
+</html>

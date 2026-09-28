@@ -8,9 +8,18 @@ if (!isset($_SESSION["user_id"])) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM categories WHERE user_id = ?");
+$stmt = $pdo->prepare("
+    SELECT *
+    FROM categories
+    WHERE is_default = 1 OR user_id = ?
+    ORDER BY type, name
+");
+
 $stmt->execute([$_SESSION["user_id"]]);
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode(["success" => true, "categories" => $categories]);
+echo json_encode([
+    "success" => true,
+    "categories" => $categories
+]);
 ?>

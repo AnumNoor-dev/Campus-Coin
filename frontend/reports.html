@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Coin | Analytics</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/reports.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+
+<body class="dashboard-body reports-page">
+  <div class="app-shell">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">$</div>
+        <div>
+          <strong>Campus Coin</strong>
+          <span>Student Finance</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="transactions.html" class="nav-item">
+          <span class="nav-icon">↕</span>
+          <span>Transactions</span>
+        </a>
+
+        <a href="categories.html" class="nav-item">
+          <span class="nav-icon">◫</span>
+          <span>Categories</span>
+        </a>
+
+        <a href="reports.html" class="nav-item active">
+          <span class="nav-icon">⌁</span>
+          <span>Analytics</span>
+        </a>
+
+        <a href="budgets.html" class="nav-item">
+          <span class="nav-icon">◎</span>
+          <span>Budgets</span>
+        </a>
+
+        <a href="tips.html" class="nav-item">
+          <span class="nav-icon">✦</span>
+          <span>Saving Tips</span>
+        </a>
+
+        <a href="bookmarks.html" class="nav-item">
+          <span class="nav-icon">◇</span>
+          <span>Saved</span>
+        </a>
+
+        <a href="profile.html" class="nav-item">
+          <span class="nav-icon">○</span>
+          <span>Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-message">
+          <span>✦</span>
+          <div>
+            <strong>See the pattern</strong>
+            <p>Your habits become clearer over time.</p>
+          </div>
+        </div>
+
+        <button class="sidebar-logout" id="logoutButton" type="button">
+          <span>↪</span>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            class="mobile-menu"
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Open navigation"
+          >
+            ☰
+          </button>
+
+          <div class="search-box reports-search-box">
+            <span>⌕</span>
+
+            <input
+              type="search"
+              id="analyticsSearch"
+              placeholder="Search Campus Coin pages..."
+              autocomplete="off"
+              aria-label="Search Campus Coin pages"
+            >
+
+            <kbd>Ctrl K</kbd>
+
+            <div
+              class="reports-search-results"
+              id="analyticsSearchResults"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+          <button
+            class="topbar-icon"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            ☼
+          </button>
+
+          <button
+            class="topbar-icon notification-button"
+            type="button"
+            aria-label="Notifications"
+          >
+            ♢
+            <span class="notification-dot"></span>
+          </button>
+
+          <div
+            class="user-menu"
+            role="button"
+            tabindex="0"
+            aria-label="Open account menu"
+          >
+
+            <div
+              class="user-avatar"
+              id="userAvatar"
+            >
+              CU
+            </div>
+
+            <div class="user-menu-copy">
+              <strong id="topbarUserName">
+                Student
+              </strong>
+
+              <span>
+                Campus Coin User
+              </span>
+            </div>
+
+            <span class="user-chevron">
+              ⌄
+            </span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <div class="dashboard-content reports-content">
+
+        <section class="reports-heading">
+
+          <div>
+
+            <div class="dashboard-breadcrumb">
+              Dashboard / Analytics
+            </div>
+
+            <h1>
+              Analytics &amp; Insights
+              <span>⌁</span>
+            </h1>
+
+            <p>
+              Turn your transactions into clear spending patterns
+              and smarter decisions.
+            </p>
+
+          </div>
+
+
+          <button
+            class="btn dashboard-add-button"
+            id="exportReportButton"
+            type="button"
+          >
+            <span>↓</span>
+            Export Report
+          </button>
+
+        </section>
+
+
+        <section
+          class="analytics-filter-bar"
+          aria-label="Report filters"
+        >
+
+          <div
+            class="analytics-tabs"
+            role="tablist"
+            aria-label="Analytics sections"
+          >
+
+            <button
+              class="analytics-tab active"
+              data-view="overview"
+              type="button"
+            >
+              Overview
+            </button>
+
+            <button
+              class="analytics-tab"
+              data-view="monthly"
+              type="button"
+            >
+              Monthly Trend
+            </button>
+
+            <button
+              class="analytics-tab"
+              data-view="categories"
+              type="button"
+            >
+              Categories
+            </button>
+
+          </div>
+
+
+          <div class="analytics-filters">
+
+            <label class="report-filter-field">
+              <span>From</span>
+
+              <input
+                type="date"
+                id="startDateFilter"
+                aria-label="Start date"
+              >
+            </label>
+
+
+            <label class="report-filter-field">
+              <span>To</span>
+
+              <input
+                type="date"
+                id="endDateFilter"
+                aria-label="End date"
+              >
+            </label>
+
+
+            <label class="report-filter-field">
+              <span>Expense Category</span>
+
+              <select
+                id="reportCategoryFilter"
+                aria-label="Expense category"
+              >
+                <option value="">
+                  All Expense Categories
+                </option>
+              </select>
+            </label>
+
+
+            <label class="report-filter-field">
+              <span>Income Source</span>
+
+              <select
+                id="incomeSourceFilter"
+                aria-label="Income source"
+              >
+                <option value="">
+                  All Income Sources
+                </option>
+              </select>
+            </label>
+
+
+            <button
+              class="analytics-apply-button"
+              id="applyReportFilters"
+              type="button"
+            >
+              Apply Filters
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <div
+          class="reports-status"
+          id="reportsStatus"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+
+        <section
+          class="analytics-summary-grid"
+          id="overviewSection"
+        >
+
+          <article class="analytics-summary-card">
+
+            <div class="analytics-summary-icon income">
+              ↙
+            </div>
+
+            <div>
+              <span>Total Income</span>
+              <strong id="reportIncome">Rs. 0</strong>
+            </div>
+
+            <small>
+              Selected period
+            </small>
+
+          </article>
+
+
+          <article class="analytics-summary-card">
+
+            <div class="analytics-summary-icon expense">
+              ↗
+            </div>
+
+            <div>
+              <span>Total Spending</span>
+              <strong id="reportExpense">Rs. 0</strong>
+            </div>
+
+            <small>
+              Selected period
+            </small>
+
+          </article>
+
+
+          <article class="analytics-summary-card">
+
+            <div class="analytics-summary-icon balance">
+              ◎
+            </div>
+
+            <div>
+              <span>Net Balance</span>
+              <strong id="reportBalance">Rs. 0</strong>
+            </div>
+
+            <small>
+              Income minus expenses
+            </small>
+
+          </article>
+
+
+          <article class="analytics-summary-card">
+
+            <div class="analytics-summary-icon category">
+              ✦
+            </div>
+
+            <div>
+              <span>Top Category</span>
+              <strong id="topCategory">—</strong>
+            </div>
+
+            <small>
+              Highest spending area
+            </small>
+
+          </article>
+
+        </section>
+
+
+        <section class="analytics-grid">
+
+          <article
+            class="analytics-card monthly-chart-card"
+            id="monthlySection"
+          >
+
+            <div class="analytics-card-header">
+
+              <div>
+                <span class="section-kicker">
+                  Six Month Overview
+                </span>
+
+                <h2>
+                  Income vs Expenses
+                </h2>
+              </div>
+
+              <span class="analytics-chip">
+                Last 6 months
+              </span>
+
+            </div>
+
+
+            <div
+              class="monthly-chart"
+              id="monthlyChart"
+            >
+
+              <div class="chart-empty">
+
+                <div class="chart-empty-icon">
+                  ⌁
+                </div>
+
+                <strong>
+                  Building your trend
+                </strong>
+
+                <span>
+                  Monthly bars will appear when report data loads.
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="chart-legend">
+
+              <span>
+                <i class="legend-income"></i>
+                Income
+              </span>
+
+              <span>
+                <i class="legend-expense"></i>
+                Expenses
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="analytics-card category-chart-card"
+            id="categorySection"
+          >
+
+            <div class="analytics-card-header">
+
+              <div>
+                <span class="section-kicker">
+                  Expense Mix
+                </span>
+
+                <h2>
+                  Spending Categories
+                </h2>
+              </div>
+
+            </div>
+
+
+            <div class="analytics-donut-area">
+
+              <div
+                class="analytics-donut"
+                id="analyticsDonut"
+              >
+
+                <div class="analytics-donut-center">
+
+                  <span>
+                    Total Spent
+                  </span>
+
+                  <strong id="donutReportTotal">
+                    Rs. 0
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="analytics-category-list"
+                id="analyticsCategoryList"
+              >
+
+                <div class="analytics-category-empty">
+                  No spending data yet
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="analytics-card weekly-card">
+
+            <div class="analytics-card-header">
+
+              <div>
+                <span class="section-kicker">
+                  Current Month
+                </span>
+
+                <h2>
+                  Weekly Spending
+                </h2>
+              </div>
+
+            </div>
+
+
+            <div
+              class="weekly-bars"
+              id="weeklyBars"
+            >
+
+              <div class="weekly-empty">
+                Weekly spending will appear here.
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="analytics-card daily-card">
+
+            <div class="analytics-card-header">
+
+              <div>
+                <span class="section-kicker">
+                  Daily Activity
+                </span>
+
+                <h2>
+                  Spending Timeline
+                </h2>
+              </div>
+
+            </div>
+
+
+            <div
+              class="daily-list"
+              id="dailySummary"
+            >
+
+              <div class="daily-empty">
+                No daily spending activity yet.
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="analytics-card analytics-insight-card">
+
+            <div class="analytics-insight-top">
+
+              <span class="insight-badge">
+                ✦ Campus Insight
+              </span>
+
+              <div class="analytics-insight-icon">
+                ✦
+              </div>
+
+            </div>
+
+
+            <h2>
+              What changed this month?
+            </h2>
+
+
+            <p id="reportInsightText">
+              Once Campus Coin has enough transaction data,
+              your monthly spending story will appear here.
+            </p>
+
+
+            <div class="analytics-insight-actions">
+
+              <button
+                class="analytics-save-insight"
+                id="saveInsightButton"
+                type="button"
+              >
+                ◇ Save Insight
+              </button>
+
+
+              <button
+                class="analytics-insight-button"
+                id="exploreTipsButton"
+                type="button"
+              >
+                Explore saving tips
+                <span>→</span>
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <article class="analytics-card financial-health-card">
+
+            <span class="section-kicker">
+              Money Health
+            </span>
+
+            <h2>
+              Monthly Snapshot
+            </h2>
+
+
+            <div class="health-score-wrap">
+
+              <div
+                class="health-score"
+                id="healthScore"
+              >
+
+                <span id="healthScoreValue">
+                  0
+                </span>
+
+              </div>
+
+
+              <div class="health-copy">
+
+                <strong id="healthLabel">
+                  Waiting for data
+                </strong>
+
+                <p id="healthDescription">
+                  Track income and spending to build your
+                  monthly financial snapshot.
+                </p>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- EXPORT MODAL -->
+
+  <div
+    class="modal-backdrop"
+    id="exportModal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="modal export-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="exportModalTitle"
+    >
+
+      <div class="modal-head">
+
+        <div>
+
+          <span class="section-kicker">
+            Personal Records
+          </span>
+
+          <h3 id="exportModalTitle">
+            Export your report
+          </h3>
+
+          <p>
+            Export the currently selected report period
+            for your personal records.
+          </p>
+
+        </div>
+
+
+        <button
+          class="icon-btn"
+          id="closeExportModal"
+          type="button"
+          aria-label="Close export dialog"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <div class="export-options">
+
+        <button
+          class="export-option"
+          id="exportPdfButton"
+          type="button"
+        >
+
+          <span class="export-icon">
+            ↓
+          </span>
+
+          <div>
+            <strong>
+              PDF Report
+            </strong>
+
+            <small>
+              Download the filtered report as a PDF.
+            </small>
+          </div>
+
+          <span>→</span>
+
+        </button>
+
+
+        <button
+          class="export-option"
+          id="exportImageButton"
+          type="button"
+        >
+
+          <span class="export-icon">
+            ▣
+          </span>
+
+          <div>
+            <strong>
+              Image Report
+            </strong>
+
+            <small>
+              Download the current summary as a PNG image.
+            </small>
+          </div>
+
+          <span>→</span>
+
+        </button>
+
+
+        <button
+          class="export-option"
+          id="printReportButton"
+          type="button"
+        >
+
+          <span class="export-icon">
+            ⎙
+          </span>
+
+          <div>
+            <strong>
+              Print / Save as PDF
+            </strong>
+
+            <small>
+              Use your browser's print dialog.
+            </small>
+          </div>
+
+          <span>→</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="js/reports.js"></script>
+  <script src="js/shared-ui.js"></script>
+
+</body>
+</html>

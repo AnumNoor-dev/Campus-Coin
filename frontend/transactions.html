@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Campus Coin | Transactions</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/transactions.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+<body class="dashboard-body">
+
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-mark">$</div>
+
+      <div>
+        <strong>Campus Coin</strong>
+        <span>Student Finance</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="transactions.html" class="nav-item active">
+        <span class="nav-icon">↕</span>
+        <span>Transactions</span>
+      </a>
+
+      <a href="reports.html" class="nav-item">
+        <span class="nav-icon">⌁</span>
+        <span>Analytics</span>
+      </a>
+
+      <a href="budgets.html" class="nav-item">
+        <span class="nav-icon">◎</span>
+        <span>Budgets</span>
+      </a>
+
+      <a href="tips.html" class="nav-item">
+        <span class="nav-icon">✦</span>
+        <span>Saving Tips</span>
+      </a>
+
+      <a href="bookmarks.html" class="nav-item">
+        <span class="nav-icon">◇</span>
+        <span>Saved</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">○</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="sidebar-message">
+        <span>✦</span>
+
+        <div>
+          <strong>Every entry counts</strong>
+          <p>Small records create smarter reports.</p>
+        </div>
+      </div>
+
+      <button class="sidebar-logout" id="logoutButton" type="button">
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main class="dashboard-main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button class="mobile-menu" id="mobileMenuButton" type="button">
+          ☰
+        </button>
+
+        <div class="search-box">
+          <span>⌕</span>
+
+          <input
+            id="transactionSearch"
+            type="search"
+            placeholder="Search your transactions..."
+          >
+
+          <kbd>⌘ K</kbd>
+        </div>
+
+      </div>
+
+      <div class="topbar-actions">
+
+        <button class="topbar-icon" id="themeToggle" type="button">
+          ☼
+        </button>
+
+        <button class="topbar-icon notification-button" type="button">
+          ♢
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="user-menu">
+
+          <div class="user-avatar" id="userAvatar">
+            CU
+          </div>
+
+          <div class="user-menu-copy">
+            <strong id="topbarUserName">Student</strong>
+            <span>Campus Coin User</span>
+          </div>
+
+          <span class="user-chevron">⌄</span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="dashboard-content transactions-content">
+
+      <section class="transactions-heading">
+
+        <div>
+
+          <div class="dashboard-breadcrumb">
+            Dashboard / Transactions
+          </div>
+
+          <h1>
+            Your transactions
+            <span>↕</span>
+          </h1>
+
+          <p>
+            Keep every rupee visible and every spending decision clear.
+          </p>
+
+        </div>
+
+        <button
+          class="btn dashboard-add-button"
+          id="openTransactionModal"
+          type="button"
+        >
+          <span>＋</span>
+          Add Transaction
+        </button>
+
+      </section>
+
+
+      <section class="transaction-summary-grid">
+
+        <article class="transaction-summary-card">
+          <span class="summary-icon income-summary-icon">↙</span>
+
+          <div>
+            <span>Income this month</span>
+            <strong id="summaryIncome">Rs. 0</strong>
+          </div>
+        </article>
+
+        <article class="transaction-summary-card">
+          <span class="summary-icon expense-summary-icon">↗</span>
+
+          <div>
+            <span>Expenses this month</span>
+            <strong id="summaryExpense">Rs. 0</strong>
+          </div>
+        </article>
+
+        <article class="transaction-summary-card">
+          <span class="summary-icon count-summary-icon">#</span>
+
+          <div>
+            <span>Total entries</span>
+            <strong id="summaryCount">0</strong>
+          </div>
+        </article>
+
+      </section>
+
+
+      <section class="transactions-panel">
+
+        <div class="transactions-toolbar">
+
+          <div class="transaction-tabs">
+
+            <button
+              class="transaction-tab active"
+              data-filter="all"
+              type="button"
+            >
+              All
+            </button>
+
+            <button
+              class="transaction-tab"
+              data-filter="income"
+              type="button"
+            >
+              Income
+            </button>
+
+            <button
+              class="transaction-tab"
+              data-filter="expense"
+              type="button"
+            >
+              Expenses
+            </button>
+
+          </div>
+
+
+          <div class="transaction-filters">
+
+            <select id="categoryFilter">
+              <option value="">All Categories</option>
+            </select>
+
+            <input
+              id="dateFilter"
+              type="date"
+              aria-label="Filter by date"
+            >
+
+            <button
+              class="clear-filter-button"
+              id="clearFilters"
+              type="button"
+            >
+              Clear
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="transactions-table-wrap">
+
+          <table class="transactions-table">
+
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th class="action-heading">Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="transactionsTableBody">
+
+              <tr class="table-loading-row">
+                <td colspan="6">
+
+                  <div class="table-loading">
+                    <span class="table-loader"></span>
+                    <strong>Loading transactions...</strong>
+                  </div>
+
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <div class="transactions-empty hidden" id="transactionsEmpty">
+
+          <div class="empty-visual">
+            ↕
+          </div>
+
+          <h3>No transactions found</h3>
+
+          <p>
+            Start by adding your first income or expense.
+          </p>
+
+          <button
+            class="btn dashboard-add-button"
+            id="emptyAddButton"
+            type="button"
+          >
+            ＋ Add Transaction
+          </button>
+
+          <a
+  href="categories.html"
+  class="manage-categories-button"
+>
+  <span>◫</span>
+  Manage Categories
+</a>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<div class="modal-backdrop" id="transactionModal">
+
+  <div class="modal transaction-modal">
+
+    <div class="modal-head">
+
+      <div>
+        <span class="section-kicker">
+          Quick Entry
+        </span>
+
+        <h3 id="transactionModalTitle">
+          Add Transaction
+        </h3>
+
+        <p>
+          Keep it simple. Add the important details and save.
+        </p>
+      </div>
+
+      <button
+        class="icon-btn"
+        id="closeTransactionModal"
+        type="button"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <form id="transactionForm" class="transaction-form">
+
+      <input
+        type="hidden"
+        id="transactionId"
+      >
+
+
+      <div
+        id="transactionNotice"
+        class="notice"
+      ></div>
+
+
+      <div class="transaction-type-toggle">
+
+        <button
+          class="type-option active"
+          data-type="expense"
+          type="button"
+        >
+          <span>↗</span>
+          Expense
+        </button>
+
+        <button
+          class="type-option"
+          data-type="income"
+          type="button"
+        >
+          <span>↙</span>
+          Income
+        </button>
+
+      </div>
+
+
+      <input
+        type="hidden"
+        id="transactionType"
+        value="expense"
+      >
+
+
+      <div class="field">
+
+        <label for="transactionDescription">
+          Description
+        </label>
+
+        <input
+          class="input transaction-input"
+          id="transactionDescription"
+          type="text"
+          placeholder="e.g. Campus Cafe lunch"
+          required
+        >
+
+      </div>
+
+
+      <div class="transaction-form-grid">
+
+        <div class="field">
+
+          <label for="transactionAmount">
+            Amount
+          </label>
+
+          <div class="amount-input-wrap">
+
+            <span>Rs.</span>
+
+            <input
+              class="input transaction-input amount-input"
+              id="transactionAmount"
+              type="number"
+              min="1"
+              step="0.01"
+              placeholder="0"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="transactionDate">
+            Date
+          </label>
+
+          <input
+            class="input transaction-input"
+            id="transactionDate"
+            type="date"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="transactionCategory">
+          Category
+        </label>
+
+        <select
+          class="input transaction-input"
+          id="transactionCategory"
+          required
+        >
+          <option value="">
+            Select category
+          </option>
+        </select>
+
+      </div>
+
+
+      <label class="recurring-option">
+
+        <div>
+
+          <span class="recurring-icon">
+            ↻
+          </span>
+
+          <div>
+            <strong>Make this recurring</strong>
+            <small>
+              Useful for monthly allowances, rent or subscriptions.
+            </small>
+          </div>
+
+        </div>
+
+        <input
+          type="checkbox"
+          id="isRecurring"
+        >
+
+      </label>
+
+
+      <button
+        class="btn btn-primary transaction-save-button"
+        id="saveTransactionButton"
+        type="submit"
+      >
+        <span>Save Transaction</span>
+        <span>→</span>
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<div class="modal-backdrop" id="deleteModal">
+
+  <div class="modal delete-modal">
+
+    <div class="delete-icon">
+      !
+    </div>
+
+    <h3>Delete transaction?</h3>
+
+    <p>
+      This entry will be removed from your active transactions.
+      A history record will still be kept.
+    </p>
+
+    <div class="delete-actions">
+
+      <button
+        class="delete-cancel"
+        id="cancelDelete"
+        type="button"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="delete-confirm"
+        id="confirmDelete"
+        type="button"
+      >
+        Delete Transaction
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="js/transactions.js"></script>
+<script src="js/shared-ui.js"></script>
+</body>
+</html>

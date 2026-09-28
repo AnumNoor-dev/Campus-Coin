@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+  <title>Campus Coin | Dashboard</title>
+
+
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/dashboard.css">
+
+  <link rel="stylesheet" href="css/dashboard-quick-add.css">
+
+  <link rel="stylesheet" href="css/shared-ui.css">
+
+</head>
+
+
+
+<body class="dashboard-body">
+
+
+
+<div class="app-shell">
+
+
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+
+
+
+    <div class="sidebar-brand">
+
+
+
+      <div class="brand-mark">$</div>
+
+
+
+      <div>
+
+        <strong>Campus Coin</strong>
+
+        <span>Student Finance</span>
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+    <nav class="sidebar-nav">
+
+
+
+      <a href="dashboard.html" class="nav-item active">
+
+        <span class="nav-icon">⌂</span>
+
+        <span>Dashboard</span>
+
+      </a>
+
+
+
+      <a href="transactions.html" class="nav-item">
+
+        <span class="nav-icon">↕</span>
+
+        <span>Transactions</span>
+
+      </a>
+
+
+      <a href="categories.html" class="nav-item">
+
+        <span class="nav-icon">◫</span>
+
+        <span>Categories</span>
+
+      </a>
+
+
+
+      <a href="reports.html" class="nav-item">
+
+        <span class="nav-icon">⌁</span>
+
+        <span>Analytics</span>
+
+      </a>
+
+
+
+      <a href="budgets.html" class="nav-item">
+
+        <span class="nav-icon">◎</span>
+
+        <span>Budgets</span>
+
+      </a>
+
+
+
+      <a href="tips.html" class="nav-item">
+
+        <span class="nav-icon">✦</span>
+
+        <span>Saving Tips</span>
+
+      </a>
+
+
+
+      <a href="bookmarks.html" class="nav-item">
+
+        <span class="nav-icon">◇</span>
+
+        <span>Saved</span>
+
+      </a>
+
+
+
+      <a href="profile.html" class="nav-item">
+
+        <span class="nav-icon">○</span>
+
+        <span>Profile</span>
+
+      </a>
+
+
+
+    </nav>
+
+
+
+
+
+    <div class="sidebar-bottom">
+
+
+
+      <div class="sidebar-message">
+
+        <span>✦</span>
+
+
+
+        <div>
+
+          <strong>Stay consistent</strong>
+
+          <p>Your future self will thank you.</p>
+
+        </div>
+
+      </div>
+
+
+
+
+
+      <button
+
+        class="sidebar-logout"
+
+        id="logoutButton"
+
+        type="button"
+
+      >
+
+        <span>↪</span>
+
+        Logout
+
+      </button>
+
+
+
+    </div>
+
+
+
+  </aside>
+
+
+
+
+
+
+
+  <!-- MAIN APP -->
+
+  <main class="dashboard-main">
+
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+
+
+      <div class="topbar-left">
+
+
+
+        <button
+
+          class="mobile-menu"
+
+          id="mobileMenuButton"
+
+          type="button"
+
+        >
+
+          ☰
+
+        </button>
+
+
+
+        <div class="search-box">
+
+
+
+          <span>⌕</span>
+
+
+
+          <input
+
+            type="search"
+
+            placeholder="Search transactions, categories..."
+
+          >
+
+
+
+          <kbd>⌘ K</kbd>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+      <div class="topbar-actions">
+
+
+
+       <button
+         class="topbar-icon"
+         id="themeToggle"
+         type="button"
+         aria-label="Toggle dark mode"
+       >
+
+         ☼
+
+       </button>
+
+
+
+        <button
+          class="topbar-icon notification-button"
+          type="button"
+          aria-label="Budget notifications"
+        >
+
+          ♢
+
+          <span class="notification-dot"></span>
+
+        </button>
+
+
+
+
+
+        <div
+          class="user-menu"
+          role="button"
+          tabindex="0"
+          aria-label="Open account menu"
+        >
+
+
+
+          <div
+            class="user-avatar"
+            id="userAvatar"
+          >
+
+            CU
+
+          </div>
+
+
+
+          <div class="user-menu-copy">
+
+
+
+            <strong id="topbarUserName">
+
+              Student
+
+            </strong>
+
+
+
+            <span>
+
+              Campus Coin User
+
+            </span>
+
+
+
+          </div>
+
+
+
+          <span class="user-chevron">
+            ⌄
+          </span>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </header>
+
+
+
+
+
+
+
+    <!-- PAGE CONTENT -->
+
+    <div class="dashboard-content">
+
+
+
+
+
+      <!-- HERO / GREETING -->
+
+      <section class="dashboard-heading">
+
+
+
+        <div>
+
+
+
+          <div class="dashboard-breadcrumb">
+
+            Dashboard / Overview
+
+          </div>
+
+
+
+          <h1>
+
+            Good evening,
+
+            <span id="dashboardUserName">
+              Student
+            </span>
+
+            <span class="wave">
+              ✦
+            </span>
+
+          </h1>
+
+
+
+          <p>
+
+            Here’s how your money is looking this month.
+
+          </p>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="heading-actions">
+
+
+
+          <select
+            class="month-select"
+            id="monthSelector"
+          >
+
+            <option>
+              September 2026
+            </option>
+
+          </select>
+
+
+
+          <button
+            class="btn dashboard-add-button"
+            id="quickAddButton"
+            type="button"
+          >
+
+            <span>
+              ＋
+            </span>
+
+            Add Transaction
+
+          </button>
+
+
+
+        </div>
+
+
+
+      </section>
+
+
+
+
+
+
+
+      <!-- STATS -->
+
+      <section class="stats-grid">
+
+
+
+        <article class="stat-card income-card">
+
+
+
+          <div class="stat-top">
+
+
+
+            <div class="stat-icon income-icon">
+
+              ↙
+
+            </div>
+
+
+
+            <span class="stat-trend positive">
+
+              +12%
+
+            </span>
+
+
+
+          </div>
+
+
+
+          <span class="stat-label">
+
+            Total Income
+
+          </span>
+
+
+
+          <strong
+            class="stat-value"
+            id="totalIncome"
+          >
+
+            Rs. 0
+
+          </strong>
+
+
+
+          <small>
+
+            Income received this month
+
+          </small>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <article class="stat-card expense-card">
+
+
+
+          <div class="stat-top">
+
+
+
+            <div class="stat-icon expense-icon">
+
+              ↗
+
+            </div>
+
+
+
+            <span class="stat-trend negative">
+
+              8%
+
+            </span>
+
+
+
+          </div>
+
+
+
+          <span class="stat-label">
+
+            Total Expenses
+
+          </span>
+
+
+
+          <strong
+            class="stat-value"
+            id="totalExpense"
+          >
+
+            Rs. 0
+
+          </strong>
+
+
+
+          <small>
+
+            Your spending this month
+
+          </small>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <article class="stat-card balance-card">
+
+
+
+          <div class="stat-top">
+
+
+
+            <div class="stat-icon balance-icon">
+
+              ◎
+
+            </div>
+
+
+
+            <span class="stat-trend positive">
+
+              Healthy
+
+            </span>
+
+
+
+          </div>
+
+
+
+          <span class="stat-label">
+
+            Remaining Balance
+
+          </span>
+
+
+
+          <strong
+            class="stat-value"
+            id="remainingBalance"
+          >
+
+            Rs. 0
+
+          </strong>
+
+
+
+          <small>
+
+            Income minus expenses
+
+          </small>
+
+
+
+        </article>
+
+
+
+      </section>
+
+
+
+
+
+
+
+      <!-- MAIN GRID -->
+
+      <section class="dashboard-grid">
+
+
+
+        <!-- EXPENSE BREAKDOWN -->
+
+        <article class="dashboard-card spending-card">
+
+
+
+          <div class="card-header">
+
+
+
+            <div>
+
+              <span class="section-kicker">
+
+                Spending Overview
+
+              </span>
+
+
+
+              <h2>
+
+                Where your money went
+
+              </h2>
+
+            </div>
+
+
+
+
+
+            <a
+              href="reports.html"
+              class="card-link"
+            >
+
+              View report →
+
+            </a>
+
+
+
+          </div>
+
+
+
+
+
+          <div class="spending-content">
+
+
+
+            <div class="donut-wrap">
+
+
+
+              <div
+                class="donut-chart"
+                id="expenseDonut"
+              >
+
+
+
+                <div class="donut-center">
+
+
+
+                  <span>
+
+                    Expenses
+
+                  </span>
+
+
+
+                  <strong id="donutExpenseTotal">
+
+                    Rs. 0
+
+                  </strong>
+
+
+
+                </div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div
+              class="category-list"
+              id="categoryBreakdown"
+            >
+
+
+
+              <div class="category-row">
+
+
+
+                <div>
+
+                  <span class="category-dot dot-green"></span>
+
+                  Food
+
+                </div>
+
+
+
+                <strong>
+                  0%
+                </strong>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <!-- AI INSIGHT -->
+
+        <article class="dashboard-card insight-card">
+
+
+
+          <div class="insight-badge">
+
+            ✦ Campus Insight
+
+          </div>
+
+
+
+          <div class="insight-visual">
+
+            ✦
+
+          </div>
+
+
+
+          <h2>
+
+            Your spending story
+
+          </h2>
+
+
+
+          <p id="insightText">
+
+            Once you add a few transactions,
+
+            Campus Coin will highlight useful
+
+            patterns from your spending.
+
+          </p>
+
+
+
+          <button
+            class="insight-button"
+            id="viewInsightsButton"
+            type="button"
+          >
+
+            View insights
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <!-- RECENT TRANSACTIONS -->
+
+        <article class="dashboard-card transactions-card">
+
+
+
+          <div class="card-header">
+
+
+
+            <div>
+
+              <span class="section-kicker">
+
+                Latest Activity
+
+              </span>
+
+
+
+              <h2>
+
+                Recent Transactions
+
+              </h2>
+
+            </div>
+
+
+
+            <a
+              href="transactions.html"
+              class="card-link"
+            >
+
+              View all →
+
+            </a>
+
+
+
+          </div>
+
+
+
+
+
+          <div
+            class="recent-transactions"
+            id="recentTransactions"
+          >
+
+
+
+            <div class="dashboard-empty">
+
+
+
+              <div>
+                ↕
+              </div>
+
+
+
+              <strong>
+
+                No transactions yet
+
+              </strong>
+
+
+
+              <span>
+
+                Your latest transactions will appear here.
+
+              </span>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <!-- BUDGET -->
+
+        <article class="dashboard-card budget-card">
+
+
+
+          <div class="card-header">
+
+
+
+            <div>
+
+              <span class="section-kicker">
+
+                Monthly Budget
+
+              </span>
+
+
+
+              <h2>
+
+                Budget vs Actual
+
+              </h2>
+
+            </div>
+
+
+
+            <a
+              href="budgets.html"
+              class="card-link"
+            >
+
+              Manage →
+
+            </a>
+
+
+
+          </div>
+
+
+
+
+
+          <div id="budgetOverview">
+
+
+
+            <div class="budget-summary">
+
+
+
+              <div>
+
+                <span>
+
+                  Total budget used
+
+                </span>
+
+
+
+                <strong id="budgetPercentage">
+
+                  0%
+
+                </strong>
+
+              </div>
+
+
+
+
+
+              <div
+                class="budget-circle"
+                id="budgetCircle"
+              >
+
+                <span>
+                  0%
+                </span>
+
+              </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="budget-progress">
+
+
+
+              <div
+                id="budgetProgressBar"
+                style="width:0%"
+              ></div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="budget-meta">
+
+
+
+              <span id="budgetSpent">
+
+                Rs. 0 spent
+
+              </span>
+
+
+
+              <span id="budgetLimit">
+
+                Rs. 0 budget
+
+              </span>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <!-- SAVING TIP -->
+
+        <article class="dashboard-card tip-card">
+
+
+
+          <div class="tip-icon">
+
+            ✦
+
+          </div>
+
+
+
+          <div class="tip-copy">
+
+
+
+            <span class="section-kicker">
+
+              Smart Saving Tip
+
+            </span>
+
+
+
+            <h2 id="savingTipTitle">
+
+              Keep tracking your spending
+
+            </h2>
+
+
+
+            <p id="savingTipText">
+
+              Small daily entries make your monthly
+
+              reports much more useful.
+
+            </p>
+
+
+
+          </div>
+
+
+
+
+
+          <button
+            class="tip-save"
+            id="pinTipButton"
+            type="button"
+            title="Pin saving tip"
+          >
+
+            ♧
+
+          </button>
+
+
+
+        </article>
+
+
+
+
+
+
+
+        <!-- SAVINGS GOAL -->
+
+        <article class="dashboard-card goal-card">
+
+
+
+          <div class="card-header">
+
+
+
+            <div>
+
+              <span class="section-kicker">
+
+                Savings Goal
+
+              </span>
+
+
+
+              <h2>
+
+                Your monthly target
+
+              </h2>
+
+            </div>
+
+
+
+          </div>
+
+
+
+
+
+          <div class="goal-main">
+
+
+
+            <div class="goal-icon">
+
+              ◎
+
+            </div>
+
+
+
+            <div class="goal-copy">
+
+
+
+              <strong id="savingsGoal">
+
+                Rs. 0
+
+              </strong>
+
+
+
+              <span>
+
+                monthly savings goal
+
+              </span>
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+
+
+          <div class="goal-progress">
+
+            <div id="goalProgressBar"></div>
+
+          </div>
+
+
+
+
+
+          <div class="goal-footer">
+
+
+
+            <span id="goalSaved">
+
+              Rs. 0 saved
+
+            </span>
+
+
+
+            <span id="goalPercentage">
+
+              0%
+
+            </span>
+
+
+
+          </div>
+
+
+
+        </article>
+
+
+
+      </section>
+
+
+
+
+
+      <footer class="dashboard-footer">
+
+        <span>
+
+          Campus Coin • Smart Spending, Student Style
+
+        </span>
+
+
+
+        <span>
+
+          Keep building better money habits ✦
+
+        </span>
+
+      </footer>
+
+
+
+
+
+    </div>
+
+
+
+  </main>
+
+
+
+</div>
+
+
+
+
+
+<!-- =========================================================
+     QUICK ADD TRANSACTION MODAL
+========================================================= -->
+
+<div
+  class="modal-backdrop"
+  id="quickAddModal"
+  aria-hidden="true"
+>
+
+  <div
+    class="modal quick-add-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="quickAddTitle"
+  >
+
+
+    <!-- MODAL HEADER -->
+
+    <div class="modal-head">
+
+      <div>
+
+        <span class="section-kicker">
+
+          Quick Entry
+
+        </span>
+
+
+        <h3 id="quickAddTitle">
+
+          Add Transaction
+
+        </h3>
+
+
+        <p>
+
+          Log income or spending without leaving your dashboard.
+
+        </p>
+
+      </div>
+
+
+      <button
+        class="icon-btn"
+        id="quickAddClose"
+        type="button"
+        aria-label="Close add transaction dialog"
+      >
+
+        ✕
+
+      </button>
+
+    </div>
+
+
+
+    <!-- TRANSACTION FORM -->
+
+    <form
+      id="quickAddForm"
+      class="quick-add-form"
+    >
+
+
+      <!-- TRANSACTION TYPE -->
+
+      <fieldset class="quick-add-type-field">
+
+        <legend>
+
+          Transaction Type
+
+        </legend>
+
+
+        <div
+          class="quick-type-switch"
+          role="group"
+          aria-label="Transaction type"
+        >
+
+
+          <button
+            class="quick-type-button"
+            id="quickExpenseButton"
+            type="button"
+            data-transaction-type="expense"
+            aria-pressed="true"
+          >
+
+            <span>
+              ↗
+            </span>
+
+            Expense
+
+          </button>
+
+
+          <button
+            class="quick-type-button"
+            id="quickIncomeButton"
+            type="button"
+            data-transaction-type="income"
+            aria-pressed="false"
+          >
+
+            <span>
+              ↙
+            </span>
+
+            Income
+
+          </button>
+
+
+        </div>
+
+      </fieldset>
+
+
+
+      <!-- FORM FIELDS -->
+
+      <div class="quick-add-grid">
+
+
+        <!-- CATEGORY -->
+
+        <label class="quick-add-field full">
+
+          <span>
+
+            Category
+
+          </span>
+
+
+          <select
+            id="quickCategory"
+            required
+          >
+
+            <option value="">
+
+              Select category
+
+            </option>
+
+          </select>
+
+        </label>
+
+
+
+        <!-- AMOUNT -->
+
+        <label class="quick-add-field">
+
+          <span>
+
+            Amount (PKR)
+
+          </span>
+
+
+          <div class="quick-money-input">
+
+            <b>
+
+              Rs.
+
+            </b>
+
+
+            <input
+              id="quickAmount"
+              type="number"
+              min="0.01"
+              step="0.01"
+              inputmode="decimal"
+              placeholder="Enter amount"
+              required
+            >
+
+          </div>
+
+        </label>
+
+
+
+        <!-- DATE -->
+
+        <label class="quick-add-field">
+
+          <span>
+
+            Date
+
+          </span>
+
+
+          <input
+            id="quickDate"
+            type="date"
+            required
+          >
+
+        </label>
+
+
+
+        <!-- DESCRIPTION -->
+
+        <label class="quick-add-field full">
+
+          <span>
+
+            Description
+
+            <small>
+              (optional)
+            </small>
+
+          </span>
+
+
+          <input
+            id="quickDescription"
+            type="text"
+            maxlength="255"
+            placeholder="e.g. Bus ticket, lunch, monthly allowance"
+          >
+
+        </label>
+
+
+      </div>
+
+
+
+      <!-- RECURRING -->
+
+      <label class="quick-recurring-option">
+
+
+        <span class="quick-recurring-icon">
+
+          ↻
+
+        </span>
+
+
+        <span class="quick-recurring-copy">
+
+          <strong>
+
+            Make this recurring
+
+          </strong>
+
+
+          <small>
+
+            Creates the same transaction monthly.
+
+          </small>
+
+        </span>
+
+
+        <input
+          id="quickRecurring"
+          type="checkbox"
+        >
+
+
+      </label>
+
+
+
+      <!-- MESSAGE -->
+
+      <div
+        class="quick-add-message"
+        id="quickAddMessage"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+
+
+      <!-- SAVE BUTTON -->
+
+      <button
+        class="quick-save-button"
+        id="quickSaveButton"
+        type="submit"
+      >
+
+        <span>
+
+          Save Transaction
+
+        </span>
+
+
+        <span>
+
+          →
+
+        </span>
+
+      </button>
+
+
+    </form>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+<script src="js/dashboard.js"></script>
+
+<script src="js/shared-ui.js"></script>
+
+
+</body>
+
+</html>

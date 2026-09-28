@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Campus Coin | Manage Categories</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/categories.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+
+<body class="dashboard-body">
+
+<div class="app-shell">
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+
+      <div class="brand-mark">$</div>
+
+      <div>
+        <strong>Campus Coin</strong>
+        <span>Student Finance</span>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <!-- Categories is treated as part of Transactions -->
+      <a href="transactions.html" class="nav-item active">
+        <span class="nav-icon">↕</span>
+        <span>Transactions</span>
+      </a>
+
+      <a href="reports.html" class="nav-item">
+        <span class="nav-icon">⌁</span>
+        <span>Analytics</span>
+      </a>
+
+      <a href="budgets.html" class="nav-item">
+        <span class="nav-icon">◎</span>
+        <span>Budgets</span>
+      </a>
+
+      <a href="tips.html" class="nav-item">
+        <span class="nav-icon">✦</span>
+        <span>Saving Tips</span>
+      </a>
+
+      <a href="bookmarks.html" class="nav-item">
+        <span class="nav-icon">◇</span>
+        <span>Saved</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">○</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <div class="sidebar-message">
+
+        <span>◫</span>
+
+        <div>
+          <strong>Make it yours</strong>
+
+          <p>
+            Add categories that match your
+            own student spending habits.
+          </p>
+        </div>
+
+      </div>
+
+
+      <button
+        class="sidebar-logout"
+        id="logoutButton"
+        type="button"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="dashboard-main">
+
+    <!-- ===================================================
+         TOPBAR
+    ==================================================== -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="mobile-menu"
+          id="mobileMenuButton"
+          type="button"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="categorySearch"
+            placeholder="Search categories..."
+          >
+
+          <kbd>⌘ K</kbd>
+
+        </div>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button
+          class="topbar-icon"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          ☼
+        </button>
+
+
+        <button
+          class="topbar-icon notification-button"
+          type="button"
+          aria-label="Notifications"
+        >
+          ♢
+
+          <span class="notification-dot"></span>
+        </button>
+
+
+        <div class="user-menu">
+
+          <div
+            class="user-avatar"
+            id="userAvatar"
+          >
+            CU
+          </div>
+
+          <div class="user-menu-copy">
+
+            <strong id="topbarUserName">
+              Student
+            </strong>
+
+            <span>
+              Campus Coin User
+            </span>
+
+          </div>
+
+          <span class="user-chevron">
+            ⌄
+          </span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         CONTENT
+    ==================================================== -->
+
+    <div class="dashboard-content categories-content">
+
+      <!-- =================================================
+           HEADING
+      ================================================== -->
+
+      <section class="categories-heading">
+
+        <div>
+
+          <div class="dashboard-breadcrumb">
+            Dashboard / Transactions / Categories
+          </div>
+
+
+          <h1>
+            Manage your categories
+            <span>◫</span>
+          </h1>
+
+
+          <p>
+            Use Campus Coin's built-in categories or create
+            your own categories for income and expenses.
+          </p>
+
+        </div>
+
+
+        <button
+          class="category-primary-button"
+          id="openCategoryModal"
+          type="button"
+        >
+          <span>+</span>
+          Add Category
+        </button>
+
+      </section>
+
+
+      <!-- =================================================
+           SUMMARY
+      ================================================== -->
+
+      <section class="category-summary-grid">
+
+        <article class="category-summary-card">
+
+          <div class="category-summary-icon">
+            ◫
+          </div>
+
+          <div>
+
+            <span>Total Categories</span>
+
+            <strong id="totalCategoryCount">
+              0
+            </strong>
+
+          </div>
+
+          <small>
+            Default and personal
+          </small>
+
+        </article>
+
+
+        <article class="category-summary-card">
+
+          <div class="category-summary-icon expense">
+            ↗
+          </div>
+
+          <div>
+
+            <span>Expense</span>
+
+            <strong id="expenseCategoryCount">
+              0
+            </strong>
+
+          </div>
+
+          <small>
+            Spending categories
+          </small>
+
+        </article>
+
+
+        <article class="category-summary-card">
+
+          <div class="category-summary-icon income">
+            ↙
+          </div>
+
+          <div>
+
+            <span>Income</span>
+
+            <strong id="incomeCategoryCount">
+              0
+            </strong>
+
+          </div>
+
+          <small>
+            Money-in categories
+          </small>
+
+        </article>
+
+
+        <article class="category-summary-card">
+
+          <div class="category-summary-icon personal">
+            ✦
+          </div>
+
+          <div>
+
+            <span>My Categories</span>
+
+            <strong id="personalCategoryCount">
+              0
+            </strong>
+
+          </div>
+
+          <small>
+            Created by you
+          </small>
+
+        </article>
+
+      </section>
+
+
+      <!-- =================================================
+           INFORMATION
+      ================================================== -->
+
+      <section class="category-info-banner">
+
+        <div class="category-info-icon">
+          i
+        </div>
+
+
+        <div>
+
+          <strong>
+            System categories stay protected
+          </strong>
+
+          <p>
+            Default Campus Coin categories can be used by everyone,
+            but only your personal categories can be edited or deleted.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           CATEGORY LIBRARY
+      ================================================== -->
+
+      <section class="category-library">
+
+        <div class="category-library-header">
+
+          <div>
+
+            <span class="section-kicker">
+              CATEGORY LIBRARY
+            </span>
+
+            <h2>
+              Income & expense categories
+            </h2>
+
+          </div>
+
+
+          <div class="category-filter-tabs">
+
+            <button
+              type="button"
+              class="category-filter active"
+              data-filter="all"
+            >
+              All
+            </button>
+
+
+            <button
+              type="button"
+              class="category-filter"
+              data-filter="expense"
+            >
+              Expense
+            </button>
+
+
+            <button
+              type="button"
+              class="category-filter"
+              data-filter="income"
+            >
+              Income
+            </button>
+
+
+            <button
+              type="button"
+              class="category-filter"
+              data-filter="personal"
+            >
+              Mine
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="category-grid"
+          id="categoryGrid"
+        >
+
+          <div class="category-loading">
+
+            <div class="category-loader"></div>
+
+            <strong>
+              Loading categories...
+            </strong>
+
+            <span>
+              Preparing your category library.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           FOOTER ACTION
+      ================================================== -->
+
+      <section class="category-bottom-card">
+
+        <div class="category-bottom-icon">
+          ↕
+        </div>
+
+
+        <div>
+
+          <span class="section-kicker">
+            READY TO LOG?
+          </span>
+
+          <h2>
+            Use your categories in transactions
+          </h2>
+
+          <p>
+            New personal categories automatically become available
+            when you add or edit income and expenses.
+          </p>
+
+        </div>
+
+
+        <a href="transactions.html">
+          Go to transactions →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- =======================================================
+     ADD / EDIT MODAL
+======================================================== -->
+
+<div
+  class="category-modal-backdrop"
+  id="categoryModal"
+>
+
+  <div class="category-modal">
+
+    <div class="category-modal-header">
+
+      <div>
+
+        <span class="section-kicker">
+          PERSONAL CATEGORY
+        </span>
+
+        <h2 id="categoryModalTitle">
+          Add a category
+        </h2>
+
+        <p>
+          Create a category that matches
+          the way you receive or spend money.
+        </p>
+
+      </div>
+
+
+      <button
+        class="category-modal-close"
+        id="closeCategoryModal"
+        type="button"
+        aria-label="Close"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <form id="categoryForm">
+
+      <div class="category-form-field">
+
+        <label for="categoryName">
+          Category Name
+        </label>
+
+        <input
+          type="text"
+          id="categoryName"
+          maxlength="60"
+          placeholder="e.g. Campus Events"
+          autocomplete="off"
+          required
+        >
+
+      </div>
+
+
+      <div class="category-form-field">
+
+        <label>
+          Category Type
+        </label>
+
+
+        <div class="category-type-options">
+
+          <label class="category-type-option">
+
+            <input
+              type="radio"
+              name="categoryType"
+              value="expense"
+              checked
+            >
+
+            <span class="category-radio-card">
+
+              <span class="category-type-icon expense">
+                ↗
+              </span>
+
+              <span>
+
+                <strong>Expense</strong>
+
+                <small>
+                  Money you spend
+                </small>
+
+              </span>
+
+            </span>
+
+          </label>
+
+
+          <label class="category-type-option">
+
+            <input
+              type="radio"
+              name="categoryType"
+              value="income"
+            >
+
+            <span class="category-radio-card">
+
+              <span class="category-type-icon income">
+                ↙
+              </span>
+
+              <span>
+
+                <strong>Income</strong>
+
+                <small>
+                  Money you receive
+                </small>
+
+              </span>
+
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="category-form-message"
+        id="categoryFormMessage"
+      ></div>
+
+
+      <button
+        class="category-save-button"
+        id="categorySaveButton"
+        type="submit"
+      >
+        <span id="categorySaveButtonText">
+          Add Category
+        </span>
+
+        <span>→</span>
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     DELETE MODAL
+======================================================== -->
+
+<div
+  class="category-modal-backdrop"
+  id="deleteCategoryModal"
+>
+
+  <div class="category-modal delete-category-modal">
+
+    <div class="delete-category-icon">
+      ✕
+    </div>
+
+
+    <h2>
+      Delete this category?
+    </h2>
+
+
+    <p>
+      <strong id="deleteCategoryName">
+        Category
+      </strong>
+      will be removed from your personal categories.
+    </p>
+
+
+    <div class="delete-category-warning">
+
+      <span>!</span>
+
+      <p>
+        A category already used by transactions may not be
+        removable until those records are reassigned.
+      </p>
+
+    </div>
+
+
+    <div class="delete-category-actions">
+
+      <button
+        class="category-cancel-button"
+        id="cancelDeleteCategory"
+        type="button"
+      >
+        Keep Category
+      </button>
+
+
+      <button
+        class="category-delete-button"
+        id="confirmDeleteCategory"
+        type="button"
+      >
+        Delete
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     TOAST
+======================================================== -->
+
+<div
+  class="category-toast"
+  id="categoryToast"
+>
+
+  <span id="categoryToastIcon">
+    ✓
+  </span>
+
+  <strong id="categoryToastText">
+    Category updated
+  </strong>
+
+</div>
+
+
+<script src="js/categories.js"></script>
+<script src="js/shared-ui.js"></script>
+
+</body>
+</html>

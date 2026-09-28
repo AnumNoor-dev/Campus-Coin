@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Coin | Profile</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+
+<body class="dashboard-body profile-page">
+  <div class="app-shell">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">$</div>
+        <div>
+          <strong>Campus Coin</strong>
+          <span>Student Finance</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="transactions.html" class="nav-item">
+          <span class="nav-icon">↕</span>
+          <span>Transactions</span>
+        </a>
+
+        <a href="categories.html" class="nav-item">
+          <span class="nav-icon">◫</span>
+          <span>Categories</span>
+        </a>
+
+        <a href="reports.html" class="nav-item">
+          <span class="nav-icon">⌁</span>
+          <span>Analytics</span>
+        </a>
+
+        <a href="budgets.html" class="nav-item">
+          <span class="nav-icon">◎</span>
+          <span>Budgets</span>
+        </a>
+
+        <a href="tips.html" class="nav-item">
+          <span class="nav-icon">✦</span>
+          <span>Saving Tips</span>
+        </a>
+
+        <a href="bookmarks.html" class="nav-item">
+          <span class="nav-icon">◇</span>
+          <span>Saved</span>
+        </a>
+
+        <a href="profile.html" class="nav-item active">
+          <span class="nav-icon">○</span>
+          <span>Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-message">
+          <span>○</span>
+          <div>
+            <strong>Your money, your plan</strong>
+            <p>Keep your student finance preferences up to date.</p>
+          </div>
+        </div>
+
+        <button class="sidebar-logout" id="logoutButton" type="button">
+          <span>↪</span>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu" id="mobileMenuButton" type="button" aria-label="Open navigation">
+            ☰
+          </button>
+
+          <div class="search-box profile-search-box">
+            <span>⌕</span>
+
+            <input
+              type="search"
+              id="profilePageSearch"
+              placeholder="Search Campus Coin pages..."
+              autocomplete="off"
+              aria-label="Search Campus Coin pages"
+            >
+
+            <kbd>Ctrl K</kbd>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+
+          <button
+            class="topbar-icon"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark mode"
+          >
+            ☼
+          </button>
+
+          <button
+            class="topbar-icon notification-button"
+            type="button"
+            aria-label="Budget notifications"
+          >
+            ◇
+            <span class="notification-dot cc-hidden"></span>
+          </button>
+
+          <div
+            class="user-menu"
+            role="button"
+            tabindex="0"
+            aria-label="Open account menu"
+          >
+            <div class="user-avatar" id="userAvatar">
+              CU
+            </div>
+
+            <div class="user-menu-copy">
+              <strong id="topbarUserName">
+                Student
+              </strong>
+
+              <span>
+                Campus Coin User
+              </span>
+            </div>
+
+            <span class="user-chevron">
+              ⌄
+            </span>
+          </div>
+
+        </div>
+      </header>
+
+      <div class="dashboard-content profile-content">
+
+        <section class="profile-heading">
+          <div>
+            <div class="dashboard-breadcrumb">
+              Dashboard / Profile
+            </div>
+
+            <h1>
+              Your student profile
+              <span>○</span>
+            </h1>
+
+            <p>
+              Keep your personal details and monthly money goals updated so Campus Coin can personalize your experience.
+            </p>
+          </div>
+
+          <button
+            class="profile-save-top"
+            id="profileSaveTop"
+            type="button"
+          >
+            Save Changes
+          </button>
+        </section>
+
+        <section class="profile-hero">
+          <div class="profile-hero-glow"></div>
+
+          <div
+            class="profile-large-avatar"
+            id="profileLargeAvatar"
+          >
+            CU
+          </div>
+
+          <div class="profile-hero-copy">
+            <span class="profile-eyebrow">
+              CAMPUS COIN STUDENT
+            </span>
+
+            <h2 id="profileHeroName">
+              Student
+            </h2>
+
+            <p id="profileHeroEmail">
+              Loading account...
+            </p>
+          </div>
+
+          <div class="profile-completion">
+            <div class="completion-top">
+              <span>Profile setup</span>
+              <strong id="profileCompletionText">
+                0%
+              </strong>
+            </div>
+
+            <div class="completion-track">
+              <div
+                class="completion-fill"
+                id="profileCompletionFill"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="profile-workspace">
+
+          <div class="profile-left-column">
+
+            <article class="profile-panel">
+              <div class="profile-panel-head">
+                <div>
+                  <span class="section-kicker">
+                    PERSONAL DETAILS
+                  </span>
+
+                  <h2>
+                    Basic information
+                  </h2>
+                </div>
+
+                <div class="profile-panel-icon">
+                  ○
+                </div>
+              </div>
+
+              <form id="profileForm">
+
+                <div class="profile-form-grid">
+
+                  <div class="profile-field full">
+                    <label for="profileName">
+                      Full Name
+                    </label>
+
+                    <input
+                      type="text"
+                      id="profileName"
+                      maxlength="100"
+                      placeholder="Enter your name"
+                      required
+                    >
+                  </div>
+
+                  <div class="profile-field full">
+                    <label for="profileEmail">
+                      Email Address
+                    </label>
+
+                    <input
+                      type="email"
+                      id="profileEmail"
+                      readonly
+                    >
+
+                    <small>
+                      Your login email cannot be changed here.
+                    </small>
+                  </div>
+
+                  <div class="profile-field">
+                    <label for="academicYear">
+                      Academic Year
+                    </label>
+
+                    <select id="academicYear">
+                      <option value="">
+                        Select year
+                      </option>
+
+                      <option value="1st Year">
+                        1st Year
+                      </option>
+
+                      <option value="2nd Year">
+                        2nd Year
+                      </option>
+
+                      <option value="3rd Year">
+                        3rd Year
+                      </option>
+
+                      <option value="4th Year">
+                        4th Year
+                      </option>
+
+                      <option value="5th Year">
+                        5th Year
+                      </option>
+
+                      <option value="Postgraduate">
+                        Postgraduate
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="profile-field">
+                    <label for="monthlyAllowance">
+                      Monthly Allowance Baseline
+                    </label>
+
+                    <div class="profile-money-input">
+                      <span>Rs.</span>
+
+                      <input
+                        type="number"
+                        id="monthlyAllowance"
+                        min="0"
+                        step="1"
+                        placeholder="15000"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="profile-field full">
+                    <label for="savingsGoal">
+                      Monthly Savings Goal
+                    </label>
+
+                    <div class="profile-money-input">
+                      <span>Rs.</span>
+
+                      <input
+                        type="number"
+                        id="savingsGoal"
+                        min="0"
+                        step="1"
+                        placeholder="3000"
+                      >
+                    </div>
+
+                    <small>
+                      Choose a realistic amount you would like to save each month.
+                    </small>
+                  </div>
+
+                </div>
+
+                <div
+                  class="profile-form-message"
+                  id="profileFormMessage"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+
+                <button
+                  class="profile-submit-button"
+                  id="profileSubmitButton"
+                  type="submit"
+                >
+                  <span>
+                    Save Profile
+                  </span>
+
+                  <span>
+                    →
+                  </span>
+                </button>
+
+              </form>
+            </article>
+
+            <section
+              class="profile-quick-links"
+              aria-label="Profile shortcuts"
+            >
+
+              <a
+                href="budgets.html"
+                class="profile-quick-card"
+              >
+                <span class="profile-quick-icon">
+                  ◎
+                </span>
+
+                <div>
+                  <strong>
+                    Adjust budgets
+                  </strong>
+
+                  <small>
+                    Review monthly category limits
+                  </small>
+                </div>
+
+                <span>→</span>
+              </a>
+
+              <a
+                href="tips.html"
+                class="profile-quick-card"
+              >
+                <span class="profile-quick-icon">
+                  ✦
+                </span>
+
+                <div>
+                  <strong>
+                    Saving tips
+                  </strong>
+
+                  <small>
+                    See personalized opportunities
+                  </small>
+                </div>
+
+                <span>→</span>
+              </a>
+
+              <a
+                href="reports.html"
+                class="profile-quick-card"
+              >
+                <span class="profile-quick-icon">
+                  ⌁
+                </span>
+
+                <div>
+                  <strong>
+                    Analytics
+                  </strong>
+
+                  <small>
+                    Review your spending patterns
+                  </small>
+                </div>
+
+                <span>→</span>
+              </a>
+
+            </section>
+
+          </div>
+
+          <aside class="profile-side-column">
+
+            <article class="money-plan-card">
+
+              <div class="side-card-heading">
+                <div>
+                  <span class="section-kicker">
+                    YOUR MONEY PLAN
+                  </span>
+
+                  <h2>
+                    Monthly snapshot
+                  </h2>
+                </div>
+
+                <span class="side-card-symbol">
+                  ✦
+                </span>
+              </div>
+
+              <div class="money-plan-content">
+
+                <div class="money-plan-row">
+                  <span>
+                    Allowance baseline
+                  </span>
+
+                  <strong id="allowancePreview">
+                    Rs. 0
+                  </strong>
+                </div>
+
+                <div class="money-plan-row">
+                  <span>
+                    Savings goal
+                  </span>
+
+                  <strong id="goalPreview">
+                    Rs. 0
+                  </strong>
+                </div>
+
+                <div class="money-plan-divider"></div>
+
+                <div class="money-plan-row highlight">
+                  <span>
+                    Planned spending room
+                  </span>
+
+                  <strong id="spendingRoomPreview">
+                    Rs. 0
+                  </strong>
+                </div>
+
+                <div class="goal-progress">
+
+                  <div class="goal-progress-head">
+                    <span>
+                      Goal vs allowance
+                    </span>
+
+                    <strong id="goalPercent">
+                      0%
+                    </strong>
+                  </div>
+
+                  <div class="goal-progress-track">
+                    <div
+                      class="goal-progress-fill"
+                      id="goalProgressFill"
+                    ></div>
+                  </div>
+
+                </div>
+
+              </div>
+            </article>
+
+            <article class="profile-security-card">
+
+              <div class="side-card-heading">
+                <div>
+                  <span class="section-kicker">
+                    ACCOUNT SECURITY
+                  </span>
+
+                  <h2>
+                    Account protection
+                  </h2>
+                </div>
+
+                <span class="security-main-icon">
+                  ◇
+                </span>
+              </div>
+
+              <div class="security-list">
+
+                <div class="security-row">
+                  <span class="security-row-icon">
+                    ✓
+                  </span>
+
+                  <div>
+                    <strong>
+                      Secure session
+                    </strong>
+
+                    <p>
+                      Your financial records are available only after login.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="security-row">
+                  <span class="security-row-icon">
+                    @
+                  </span>
+
+                  <div>
+                    <strong>
+                      Account email
+                    </strong>
+
+                    <p id="securityEmail">
+                      Loading account email...
+                    </p>
+                  </div>
+                </div>
+
+                <div class="security-row">
+                  <span class="security-row-icon">
+                    ↺
+                  </span>
+
+                  <div>
+                    <strong>
+                      Password recovery
+                    </strong>
+
+                    <p>
+                      Request a secure reset link for your Campus Coin account.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <a
+                href="forgot_password.html"
+                class="password-help-link"
+              >
+                Password help
+                <span>→</span>
+              </a>
+
+            </article>
+
+          </aside>
+
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div
+    class="profile-toast"
+    id="profileToast"
+    role="status"
+    aria-live="polite"
+  >
+    <span
+      class="profile-toast-icon"
+      id="profileToastIcon"
+    >
+      ✓
+    </span>
+
+    <span id="profileToastText">
+      Profile updated
+    </span>
+  </div>
+
+  <script src="js/profile.js"></script>
+  <script src="js/shared-ui.js"></script>
+</body>
+</html>

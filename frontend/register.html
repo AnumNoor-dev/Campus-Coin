@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Campus Coin | Create Account</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<main class="auth-shell register-shell">
+
+  <!-- LEFT VISUAL -->
+  <section class="auth-visual register-visual">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-mark">$</div>
+
+      <div>
+        <strong>Campus Coin</strong>
+        <small>Smart Spending • Student Style</small>
+      </div>
+
+    </a>
+
+
+    <div class="floating-coin coin-one">$</div>
+    <div class="floating-coin coin-two">✦</div>
+
+
+    <div class="floating-card register-preview">
+
+      <span>Your Savings Goal</span>
+
+      <strong>Rs. 5,000</strong>
+
+      <div class="preview-progress">
+        <div></div>
+      </div>
+
+      <small>Keep going — you're building a habit.</small>
+
+    </div>
+
+
+    <div class="auth-copy register-copy">
+
+      <div class="hero-tag">
+        ✦ Start your money journey
+      </div>
+
+      <h1>
+        Small habits.<br>
+        <span>Big student goals.</span>
+      </h1>
+
+      <p>
+        Create your Campus Coin account and build a simple system
+        for tracking money, controlling spending and saving towards
+        the things that matter to you.
+      </p>
+
+
+      <div class="journey">
+
+        <div class="journey-step">
+
+          <div class="journey-number">01</div>
+
+          <div>
+            <strong>Track</strong>
+            <span>Know exactly where your money goes.</span>
+          </div>
+
+        </div>
+
+
+        <div class="journey-line"></div>
+
+
+        <div class="journey-step">
+
+          <div class="journey-number">02</div>
+
+          <div>
+            <strong>Understand</strong>
+            <span>See patterns through reports and insights.</span>
+          </div>
+
+        </div>
+
+
+        <div class="journey-line"></div>
+
+
+        <div class="journey-step">
+
+          <div class="journey-number">03</div>
+
+          <div>
+            <strong>Improve</strong>
+            <span>Turn small changes into smarter savings.</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="auth-foot">
+      <span>Your future self will thank you.</span>
+      <span>Campus Coin • 2026</span>
+    </div>
+
+  </section>
+
+
+
+  <!-- REGISTER FORM -->
+  <section class="auth-panel register-panel">
+
+    <div class="auth-card register-card">
+
+      <span class="eyebrow">
+        ✦ Student Registration
+      </span>
+
+
+      <h2>Create your account</h2>
+
+      <p>
+        A few details and your personal Campus Coin space
+        will be ready.
+      </p>
+
+
+      <form id="registerForm" class="form-grid">
+
+        <div
+          id="registerNotice"
+          class="notice"
+          role="alert">
+        </div>
+
+
+        <!-- NAME -->
+        <div class="field">
+
+          <label for="name">
+            Full Name
+          </label>
+
+          <input
+            class="input register-input"
+            id="name"
+            type="text"
+            placeholder="e.g. Ayesha Khan"
+            autocomplete="name"
+            required
+          >
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="field">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+            class="input register-input"
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <!-- TWO COLUMNS -->
+        <div class="register-two-column">
+
+
+          <!-- YEAR -->
+          <div class="field">
+
+            <label for="academicYear">
+              Academic Year
+            </label>
+
+            <select
+              class="input register-input select-input"
+              id="academicYear"
+            >
+
+              <option value="">
+                Select year
+              </option>
+
+              <option value="1st Year">
+                1st Year
+              </option>
+
+              <option value="2nd Year">
+                2nd Year
+              </option>
+
+              <option value="3rd Year">
+                3rd Year
+              </option>
+
+              <option value="4th Year">
+                4th Year
+              </option>
+
+              <option value="5th Year">
+                5th Year
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- SAVINGS GOAL -->
+          <div class="field">
+
+            <label for="savingsGoal">
+              Monthly Savings Goal
+            </label>
+
+            <input
+              class="input register-input"
+              id="savingsGoal"
+              type="number"
+              min="0"
+              step="100"
+              placeholder="e.g. 5000"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="field">
+
+          <label for="password">
+            Password
+          </label>
+
+          <div class="input-wrap">
+
+            <input
+              class="input"
+              id="password"
+              type="password"
+              placeholder="Create a secure password"
+              autocomplete="new-password"
+              required
+            >
+
+            <button
+              id="toggleRegisterPassword"
+              class="input-action"
+              type="button"
+              aria-label="Show password"
+            >
+              👁
+            </button>
+
+          </div>
+
+
+          <div class="password-strength">
+
+            <div class="strength-track">
+              <span id="strengthBar"></span>
+            </div>
+
+            <small id="strengthText">
+              Use at least 6 characters
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONFIRM -->
+        <div class="field">
+
+          <label for="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input
+            class="input register-input"
+            id="confirmPassword"
+            type="password"
+            placeholder="Enter password again"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+
+        <div class="register-note">
+
+          <span>✓</span>
+
+          <p>
+            Your financial information stays inside your
+            Campus Coin account and can only be accessed
+            after login.
+          </p>
+
+        </div>
+
+
+        <button
+          id="registerButton"
+          class="btn btn-primary"
+          type="submit"
+        >
+
+          <span>Create My Campus Coin Account</span>
+
+          <span>→</span>
+
+        </button>
+
+      </form>
+
+
+      <div class="auth-switch">
+
+        Already have an account?
+
+        <a
+          href="index.html"
+          class="text-link"
+        >
+          Log in
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script src="js/register.js"></script>
+
+</body>
+</html>

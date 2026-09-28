@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Campus Coin | Saved</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/bookmarks.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+
+<body class="dashboard-body">
+
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-mark">$</div>
+
+      <div>
+        <strong>Campus Coin</strong>
+        <span>Student Finance</span>
+      </div>
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="transactions.html" class="nav-item">
+        <span class="nav-icon">↕</span>
+        <span>Transactions</span>
+      </a>
+
+      <a href="reports.html" class="nav-item">
+        <span class="nav-icon">⌁</span>
+        <span>Analytics</span>
+      </a>
+
+      <a href="budgets.html" class="nav-item">
+        <span class="nav-icon">◎</span>
+        <span>Budgets</span>
+      </a>
+
+      <a href="tips.html" class="nav-item">
+        <span class="nav-icon">✦</span>
+        <span>Saving Tips</span>
+      </a>
+
+      <a href="bookmarks.html" class="nav-item active">
+        <span class="nav-icon">◇</span>
+        <span>Saved</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">○</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <div class="sidebar-message">
+        <span>◇</span>
+
+        <div>
+          <strong>Keep what matters</strong>
+          <p>Your useful tips and insights stay easy to find.</p>
+        </div>
+      </div>
+
+      <button
+        class="sidebar-logout"
+        id="logoutButton"
+        type="button"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main class="dashboard-main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="mobile-menu"
+          id="mobileMenuButton"
+          type="button"
+        >
+          ☰
+        </button>
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="savedSearch"
+            placeholder="Search saved items..."
+          >
+
+          <kbd>⌘ K</kbd>
+
+        </div>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button
+          class="topbar-icon"
+          id="themeToggle"
+          type="button"
+        >
+          ☼
+        </button>
+
+        <button
+          class="topbar-icon notification-button"
+          type="button"
+        >
+          ♢
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="user-menu">
+
+          <div class="user-avatar" id="userAvatar">
+            CU
+          </div>
+
+          <div class="user-menu-copy">
+            <strong id="topbarUserName">Student</strong>
+            <span>Campus Coin User</span>
+          </div>
+
+          <span class="user-chevron">⌄</span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="dashboard-content saved-content">
+
+      <!-- HEADING -->
+
+      <section class="saved-heading">
+
+        <div>
+
+          <div class="dashboard-breadcrumb">
+            Dashboard / Saved
+          </div>
+
+          <h1>
+            Saved for later
+            <span>◇</span>
+          </h1>
+
+          <p>
+            Keep useful saving ideas and monthly insights
+            together so you can revisit them anytime.
+          </p>
+
+        </div>
+
+        <a
+          href="tips.html"
+          class="btn dashboard-add-button"
+        >
+          <span>✦</span>
+          Explore Tips
+        </a>
+
+      </section>
+
+
+      <!-- SUMMARY -->
+
+      <section class="saved-summary-grid">
+
+        <article class="saved-summary-card">
+
+          <div class="saved-summary-icon">
+            ◇
+          </div>
+
+          <div>
+            <span>Total Saved</span>
+            <strong id="savedTotalCount">0</strong>
+          </div>
+
+          <small>
+            Items in your collection
+          </small>
+
+        </article>
+
+
+        <article class="saved-summary-card">
+
+          <div class="saved-summary-icon tips">
+            ✦
+          </div>
+
+          <div>
+            <span>Saving Tips</span>
+            <strong id="savedTipsCount">0</strong>
+          </div>
+
+          <small>
+            Useful actions to revisit
+          </small>
+
+        </article>
+
+
+        <article class="saved-summary-card">
+
+          <div class="saved-summary-icon insights">
+            ⌁
+          </div>
+
+          <div>
+            <span>Insights</span>
+            <strong id="savedInsightsCount">0</strong>
+          </div>
+
+          <small>
+            Monthly spending notes
+          </small>
+
+        </article>
+
+      </section>
+
+
+      <!-- MAIN SAVED LIBRARY -->
+
+      <section class="saved-library">
+
+        <div class="saved-library-header">
+
+          <div>
+            <span class="section-kicker">
+              YOUR COLLECTION
+            </span>
+
+            <h2>Bookmarks</h2>
+          </div>
+
+
+          <div class="saved-filter-tabs">
+
+            <button
+              class="saved-filter active"
+              data-filter="all"
+              type="button"
+            >
+              All
+            </button>
+
+            <button
+              class="saved-filter"
+              data-filter="tip"
+              type="button"
+            >
+              Tips
+            </button>
+
+            <button
+              class="saved-filter"
+              data-filter="insight"
+              type="button"
+            >
+              Insights
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="saved-grid" id="savedGrid">
+
+          <div class="saved-loading">
+
+            <div class="saved-loader"></div>
+
+            <strong>Loading your saved items...</strong>
+
+            <span>
+              Your bookmarks will appear here.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- HABIT CARD -->
+
+      <section class="saved-habit-card">
+
+        <div class="saved-habit-icon">
+          ✦
+        </div>
+
+        <div>
+
+          <span class="section-kicker">
+            QUICK REMINDER
+          </span>
+
+          <h2>Turn saved ideas into small actions</h2>
+
+          <p>
+            Revisit the tips that match your current spending
+            and choose one realistic change to try this month.
+          </p>
+
+        </div>
+
+        <a href="reports.html">
+          View analytics →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- DELETE MODAL -->
+
+<div
+  class="modal-backdrop"
+  id="removeBookmarkModal"
+>
+
+  <div class="modal saved-delete-modal">
+
+    <div class="saved-delete-icon">
+      ◇
+    </div>
+
+    <h3>Remove saved item?</h3>
+
+    <p>
+      This bookmark will be removed from your saved collection.
+    </p>
+
+    <div class="saved-delete-actions">
+
+      <button
+        id="cancelRemoveBookmark"
+        type="button"
+        class="saved-cancel-button"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="confirmRemoveBookmark"
+        type="button"
+        class="saved-remove-button"
+      >
+        Remove
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="saved-toast" id="savedToast">
+  <span>✓</span>
+  <strong id="savedToastText">
+    Saved item removed
+  </strong>
+</div>
+
+
+<script src="js/bookmarks.js"></script>
+<script src="js/shared-ui.js"></script>
+
+</body>
+</html>

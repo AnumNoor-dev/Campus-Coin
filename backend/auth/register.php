@@ -41,4 +41,5 @@ $stmt = $pdo->prepare("INSERT INTO users (user_id, name, email, password_hash, a
 $stmt->execute([$user_id, $name, $email, $password_hash, $academic_year, $savings_goal]);
 
 echo json_encode(["success" => true, "message" => "Registered successfully", "user_id" => $user_id]);
+
 ?>

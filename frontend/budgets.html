@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Campus Coin | Budgets</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/budgets.css">
+  <link rel="stylesheet" href="css/shared-ui.css">
+</head>
+
+<body class="dashboard-body">
+
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-mark">$</div>
+
+      <div>
+        <strong>Campus Coin</strong>
+        <span>Student Finance</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="transactions.html" class="nav-item">
+        <span class="nav-icon">↕</span>
+        <span>Transactions</span>
+      </a>
+
+      <a href="reports.html" class="nav-item">
+        <span class="nav-icon">⌁</span>
+        <span>Analytics</span>
+      </a>
+
+      <a href="budgets.html" class="nav-item active">
+        <span class="nav-icon">◎</span>
+        <span>Budgets</span>
+      </a>
+
+      <a href="tips.html" class="nav-item">
+        <span class="nav-icon">✦</span>
+        <span>Saving Tips</span>
+      </a>
+
+      <a href="bookmarks.html" class="nav-item">
+        <span class="nav-icon">◇</span>
+        <span>Saved</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">○</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="sidebar-message">
+        <span>◎</span>
+
+        <div>
+          <strong>Plan before you spend</strong>
+          <p>A simple monthly limit can make a big difference.</p>
+        </div>
+      </div>
+
+      <button
+        class="sidebar-logout"
+        id="logoutButton"
+        type="button"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <main class="dashboard-main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="mobile-menu"
+          id="mobileMenuButton"
+          type="button"
+        >
+          ☰
+        </button>
+
+        <div class="search-box">
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="budgetSearch"
+            placeholder="Search your budgets..."
+          >
+
+          <kbd>⌘ K</kbd>
+        </div>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button
+          class="topbar-icon"
+          id="themeToggle"
+          type="button"
+        >
+          ☼
+        </button>
+
+        <button
+          class="topbar-icon notification-button"
+          type="button"
+        >
+          ♢
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="user-menu">
+
+          <div class="user-avatar" id="userAvatar">
+            CU
+          </div>
+
+          <div class="user-menu-copy">
+            <strong id="topbarUserName">Student</strong>
+            <span>Campus Coin User</span>
+          </div>
+
+          <span class="user-chevron">⌄</span>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="dashboard-content budgets-content">
+
+      <!-- HEADING -->
+
+      <section class="budgets-heading">
+
+        <div>
+
+          <div class="dashboard-breadcrumb">
+            Dashboard / Budgets
+          </div>
+
+          <h1>
+            Keep spending on track
+            <span>◎</span>
+          </h1>
+
+          <p>
+            Set monthly category limits and see how much
+            room you still have before reaching them.
+          </p>
+
+        </div>
+
+
+        <button
+          class="btn dashboard-add-button"
+          id="openBudgetModal"
+          type="button"
+        >
+          <span>+</span>
+          Set Budget
+        </button>
+
+      </section>
+
+
+      <!-- MONTH SELECTOR -->
+
+      <section class="budget-month-bar">
+
+        <div>
+
+          <span class="section-kicker">
+            BUDGET PERIOD
+          </span>
+
+          <strong id="selectedMonthLabel">
+            Current month
+          </strong>
+
+        </div>
+
+
+        <div class="budget-month-controls">
+
+          <button
+            class="month-nav-button"
+            id="previousMonth"
+            type="button"
+            aria-label="Previous month"
+          >
+            ←
+          </button>
+
+          <input
+            type="month"
+            id="budgetMonth"
+          >
+
+          <button
+            class="month-nav-button"
+            id="nextMonth"
+            type="button"
+            aria-label="Next month"
+          >
+            →
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- SUMMARY -->
+
+      <section class="budget-summary-grid">
+
+        <article class="budget-summary-card">
+
+          <div class="budget-summary-icon">
+            ◎
+          </div>
+
+          <div>
+            <span>Total Budget</span>
+            <strong id="totalBudget">Rs. 0</strong>
+          </div>
+
+          <small>
+            Across all categories
+          </small>
+
+        </article>
+
+
+        <article class="budget-summary-card">
+
+          <div class="budget-summary-icon spent">
+            ↗
+          </div>
+
+          <div>
+            <span>Total Spent</span>
+            <strong id="totalBudgetSpent">Rs. 0</strong>
+          </div>
+
+          <small>
+            Spending against budgets
+          </small>
+
+        </article>
+
+
+        <article class="budget-summary-card">
+
+          <div class="budget-summary-icon remaining">
+            ↙
+          </div>
+
+          <div>
+            <span>Remaining</span>
+            <strong id="totalBudgetRemaining">Rs. 0</strong>
+          </div>
+
+          <small>
+            Available budget
+          </small>
+
+        </article>
+
+
+        <article class="budget-summary-card">
+
+          <div class="budget-summary-icon alert">
+            !
+          </div>
+
+          <div>
+            <span>Needs Attention</span>
+            <strong id="budgetAlertCount">0</strong>
+          </div>
+
+          <small>
+            Near or above limit
+          </small>
+
+        </article>
+
+      </section>
+
+
+      <!-- OVERALL PROGRESS -->
+
+      <section class="budget-overview-card">
+
+        <div class="budget-overview-copy">
+
+          <span class="section-kicker">
+            MONTHLY OVERVIEW
+          </span>
+
+          <h2>Budget vs actual spending</h2>
+
+          <p id="budgetOverviewText">
+            Set your first category budget to start tracking progress.
+          </p>
+
+        </div>
+
+
+        <div class="overall-progress-wrap">
+
+          <div class="overall-progress-top">
+
+            <span>Overall usage</span>
+
+            <strong id="overallBudgetPercent">
+              0%
+            </strong>
+
+          </div>
+
+
+          <div class="overall-progress-track">
+
+            <div
+              class="overall-progress-fill"
+              id="overallBudgetFill"
+            ></div>
+
+          </div>
+
+
+          <div class="overall-progress-meta">
+
+            <span id="overallSpentText">
+              Rs. 0 spent
+            </span>
+
+            <span id="overallLimitText">
+              Rs. 0 budget
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- BUDGET LIST -->
+
+      <section class="budgets-section">
+
+        <div class="budgets-section-header">
+
+          <div>
+            <span class="section-kicker">
+              CATEGORY LIMITS
+            </span>
+
+            <h2>Your monthly budgets</h2>
+          </div>
+
+          <span
+            class="budget-count-chip"
+            id="budgetCountChip"
+          >
+            0 categories
+          </span>
+
+        </div>
+
+
+        <div class="budget-grid" id="budgetGrid">
+
+          <div class="budget-loading">
+
+            <div class="budget-loader"></div>
+
+            <strong>Loading budgets...</strong>
+
+            <span>
+              Checking this month's spending progress.
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TIP -->
+
+      <section class="budget-tip-card">
+
+        <div class="budget-tip-icon">
+          ✦
+        </div>
+
+        <div>
+
+          <span class="section-kicker">
+            BUDGET HABIT
+          </span>
+
+          <h2>Leave a little room for surprises</h2>
+
+          <p>
+            A budget works better when it is realistic. Keep a small
+            buffer for unexpected student expenses instead of setting
+            every category too tightly.
+          </p>
+
+        </div>
+
+        <a href="tips.html">
+          Saving tips →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- BUDGET MODAL -->
+
+<div class="modal-backdrop" id="budgetModal">
+
+  <div class="modal budget-modal">
+
+    <div class="modal-head">
+
+      <div>
+
+        <span class="section-kicker">
+          MONTHLY LIMIT
+        </span>
+
+        <h3 id="budgetModalTitle">
+          Set a budget
+        </h3>
+
+        <p>
+          Choose an expense category and set a realistic monthly limit.
+        </p>
+
+      </div>
+
+      <button
+        class="icon-btn"
+        id="closeBudgetModal"
+        type="button"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <form id="budgetForm">
+
+      <div class="field">
+
+        <label for="budgetCategory">
+          Expense Category
+        </label>
+
+        <select
+          id="budgetCategory"
+          required
+        >
+          <option value="">
+            Select category
+          </option>
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="budgetAmount">
+          Monthly Limit
+        </label>
+
+        <div class="budget-money-input">
+
+          <span>Rs.</span>
+
+          <input
+            type="number"
+            id="budgetAmount"
+            min="1"
+            step="1"
+            placeholder="3000"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="budget-modal-month">
+
+        <span>Budget month</span>
+
+        <strong id="modalMonthLabel">
+          —
+        </strong>
+
+      </div>
+
+
+      <div class="budget-form-notice" id="budgetNotice"></div>
+
+
+      <button
+        class="budget-save-button"
+        id="saveBudgetButton"
+        type="submit"
+      >
+        <span>Save Budget</span>
+        <span>→</span>
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="budget-toast" id="budgetToast">
+  <span>✓</span>
+  <strong id="budgetToastText">
+    Budget saved
+  </strong>
+</div>
+
+
+<script src="js/budgets.js"></script>
+<script src="js/shared-ui.js"></script>
+
+</body>
+</html>

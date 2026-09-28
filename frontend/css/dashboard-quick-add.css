@@ -1,0 +1,875 @@
+/* =========================================================
+   CAMPUS COIN — DASHBOARD QUICK ADD
+========================================================= */
+
+body.quick-add-open {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.quick-add-modal {
+  width: min(
+    620px,
+    calc(100vw - 32px)
+  );
+
+  max-width: 620px;
+
+  max-height:
+    calc(100dvh - 48px);
+
+  overflow-x: hidden;
+
+  overflow-y: auto;
+
+  padding: 26px;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+}
+
+
+.quick-add-modal::-webkit-scrollbar {
+  width: 0;
+
+  height: 0;
+
+  display: none;
+}
+
+
+.quick-add-modal .modal-head {
+  align-items: flex-start;
+
+  margin-bottom: 18px;
+}
+
+
+.quick-add-modal .modal-head h3 {
+  margin:
+    5px 0 0;
+
+  color: var(--text);
+
+  font-size: 1.35rem;
+
+  line-height: 1.2;
+
+  letter-spacing: -.025em;
+}
+
+
+.quick-add-modal .modal-head p {
+  margin:
+    7px 0 0;
+
+  color: var(--muted);
+
+  font-size: .82rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.quick-add-form {
+  display: grid;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   TRANSACTION TYPE
+========================================================= */
+
+.quick-add-type-field {
+  min-width: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: 0;
+}
+
+
+.quick-add-type-field legend {
+  margin-bottom: 8px;
+
+  color: #53675c;
+
+  font-size: .78rem;
+
+  font-weight: 800;
+}
+
+
+.quick-type-switch {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 8px;
+
+  padding: 4px;
+
+  border:
+    1px solid #dbe7df;
+
+  border-radius: 14px;
+
+  background: #f3f7f4;
+}
+
+
+.quick-type-button {
+  min-height: 45px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    0 14px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  cursor: pointer;
+
+  color: #64776d;
+
+  background: transparent;
+
+  font-size: .82rem;
+
+  font-weight: 850;
+
+  transition:
+    color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+
+.quick-type-button:hover {
+  color: #1f6f52;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .8
+    );
+}
+
+
+.quick-type-button.active {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1f6f52,
+      #378669
+    );
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      31,
+      111,
+      82,
+      .18
+    );
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.quick-add-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 13px;
+}
+
+
+.quick-add-field {
+  min-width: 0;
+
+  display: grid;
+
+  gap: 7px;
+}
+
+
+.quick-add-field.full {
+  grid-column:
+    1 / -1;
+}
+
+
+.quick-add-field > span {
+  color: #53675c;
+
+  font-size: .78rem;
+
+  font-weight: 800;
+}
+
+
+.quick-add-field > span small {
+  color: #8b9992;
+
+  font-size: .7rem;
+
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.quick-add-field input,
+
+.quick-add-field select {
+  width: 100%;
+
+  min-height: 50px;
+
+  padding:
+    0 13px;
+
+  border:
+    1px solid #d8e5dc;
+
+  border-radius: 13px;
+
+  outline: 0;
+
+  color: var(--text);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .92
+    );
+
+  font-size: .85rem;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+
+.quick-add-field input:focus,
+
+.quick-add-field select:focus {
+  border-color: #78aa91;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      48,
+      126,
+      96,
+      .08
+    );
+}
+
+
+/* =========================================================
+   MONEY INPUT
+========================================================= */
+
+.quick-money-input {
+  min-height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid #d8e5dc;
+
+  border-radius: 13px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .92
+    );
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+
+.quick-money-input:focus-within {
+  border-color: #78aa91;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      48,
+      126,
+      96,
+      .08
+    );
+}
+
+
+.quick-money-input b {
+  flex: 0 0 auto;
+
+  padding-left: 13px;
+
+  color: #77887f;
+
+  font-size: .8rem;
+}
+
+
+.quick-money-input input {
+  min-width: 0;
+
+  min-height: 48px;
+
+  padding-left: 10px;
+
+  border: 0;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  box-shadow: none;
+}
+
+
+.quick-money-input input:focus {
+  border: 0;
+
+  background: transparent;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   RECURRING OPTION
+========================================================= */
+
+.quick-recurring-option {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-height: 72px;
+
+  padding:
+    11px 13px;
+
+  border:
+    1px solid #dce9e0;
+
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5faf6,
+      #eff7f2
+    );
+}
+
+
+.quick-recurring-icon {
+  width: 40px;
+
+  height: 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  color: #287255;
+
+  background: #e4f4e8;
+
+  font-weight: 900;
+}
+
+
+.quick-recurring-copy {
+  min-width: 0;
+}
+
+
+.quick-recurring-copy strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--text);
+
+  font-size: .82rem;
+}
+
+
+.quick-recurring-copy small {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: .72rem;
+
+  line-height: 1.45;
+}
+
+
+.quick-recurring-option input {
+  width: 21px;
+
+  height: 21px;
+
+  cursor: pointer;
+
+  accent-color: #257557;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.quick-add-message {
+  display: none;
+
+  padding:
+    10px 12px;
+
+  border-radius: 11px;
+
+  font-size: .78rem;
+
+  line-height: 1.5;
+}
+
+
+.quick-add-message.show {
+  display: block;
+}
+
+
+.quick-add-message.loading {
+  color: #48675a;
+
+  background: #eef5f0;
+}
+
+
+.quick-add-message.success {
+  color: #21684d;
+
+  background: #e9f6ec;
+}
+
+
+.quick-add-message.error {
+  color: #a54b46;
+
+  background: #fff0ed;
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
+
+.quick-save-button {
+  width: 100%;
+
+  min-height: 53px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding:
+    0 18px;
+
+  border: 0;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1d6d52,
+      #338166
+    );
+
+  box-shadow:
+    0 11px 24px
+    rgba(
+      31,
+      107,
+      82,
+      .17
+    );
+
+  font-size: .84rem;
+
+  font-weight: 900;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
+}
+
+
+.quick-save-button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 15px 30px
+    rgba(
+      31,
+      107,
+      82,
+      .22
+    );
+}
+
+
+.quick-save-button:disabled {
+  opacity: .66;
+
+  cursor: wait;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.quick-type-button:focus-visible,
+
+.quick-add-field input:focus-visible,
+
+.quick-add-field select:focus-visible,
+
+.quick-save-button:focus-visible {
+  outline:
+    2px solid #2d7b5d;
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark-theme
+.quick-add-modal
+.modal-head h3,
+
+.dark-theme
+.quick-add-type-field legend,
+
+.dark-theme
+.quick-add-field > span,
+
+.dark-theme
+.quick-recurring-copy strong {
+  color: #e7efe9;
+}
+
+
+.dark-theme
+.quick-type-switch {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      .075
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .035
+    );
+}
+
+
+.dark-theme
+.quick-type-button {
+  color: #a5b7ad;
+}
+
+
+.dark-theme
+.quick-type-button:hover {
+  color: #e6efe9;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .05
+    );
+}
+
+
+.dark-theme
+.quick-type-button.active {
+  color: #10271c;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d8efbf,
+      #b6dfab
+    );
+}
+
+
+.dark-theme
+.quick-add-field input,
+
+.dark-theme
+.quick-add-field select,
+
+.dark-theme
+.quick-money-input {
+  color: #e7efe9;
+
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      .08
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .04
+    );
+}
+
+
+.dark-theme
+.quick-add-field input:focus,
+
+.dark-theme
+.quick-add-field select:focus,
+
+.dark-theme
+.quick-money-input:focus-within {
+  border-color: #5b9678;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .055
+    );
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      91,
+      150,
+      120,
+      .10
+    );
+}
+
+
+.dark-theme
+.quick-recurring-option {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      .075
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .03
+    );
+}
+
+
+.dark-theme
+.quick-recurring-icon {
+  color: #bfe5c8;
+
+  background:
+    rgba(
+      64,
+      145,
+      102,
+      .16
+    );
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .quick-add-modal {
+    width:
+      calc(100vw - 18px);
+
+    max-width:
+      calc(100vw - 18px);
+
+    max-height:
+      calc(100dvh - 18px);
+
+    padding: 19px;
+
+    border-radius: 20px;
+  }
+
+
+  .quick-add-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .quick-add-field.full {
+    grid-column: auto;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .quick-type-switch {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .quick-recurring-option {
+    grid-template-columns:
+      auto 1fr;
+  }
+
+
+  .quick-recurring-option input {
+    grid-column: 2;
+
+    justify-self: start;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .quick-type-button,
+
+  .quick-save-button {
+    transition:
+      none !important;
+  }
+
+}

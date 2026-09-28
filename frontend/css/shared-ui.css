@@ -1,0 +1,1492 @@
+/* =========================================================
+   CAMPUS COIN — SHARED STUDENT UI
+   Account dropdown + notifications + profile search
+   + global font-size accessibility
+========================================================= */
+
+
+/* =========================================================
+   FONT SIZE SYSTEM
+========================================================= */
+
+html {
+  font-size: 16px;
+}
+
+
+html.cc-font-small {
+  font-size: 14px;
+}
+
+
+html.cc-font-normal {
+  font-size: 16px;
+}
+
+
+html.cc-font-large {
+  font-size: 18px;
+}
+
+
+body {
+  font-size: .9375rem;
+  line-height: 1.5;
+}
+
+
+.topbar-actions {
+  position: relative;
+}
+
+
+/* =========================================================
+   GLOBAL FONT CONTROLS
+========================================================= */
+
+.cc-font-controls {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 2px;
+
+  padding: 3px;
+
+  border:
+    1px solid #dce7df;
+
+  border-radius: 11px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  box-shadow:
+    0 5px 14px
+    rgba(26,76,57,.05);
+}
+
+
+.cc-font-button {
+  min-width: 32px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0 7px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  color: #536d60;
+
+  background:
+    transparent;
+
+  font-size:
+    .72rem !important;
+
+  font-weight: 850;
+
+  line-height: 1;
+
+  transition:
+    color .2s ease,
+    background .2s ease,
+    transform .2s ease;
+}
+
+
+.cc-font-button:hover {
+  color: #1f6b52;
+
+  background: #edf6ef;
+}
+
+
+.cc-font-button:focus-visible {
+  outline:
+    2px solid #2d7b5d;
+
+  outline-offset: 2px;
+}
+
+
+.cc-font-button.cc-active {
+  color: white;
+
+  background: #267456;
+
+  box-shadow:
+    0 5px 12px
+    rgba(38,116,86,.18);
+}
+
+
+/* =========================================================
+   GLOBAL ACCOUNT MENU
+========================================================= */
+
+.user-menu {
+  cursor: pointer;
+
+  user-select: none;
+}
+
+
+.user-menu:focus-visible {
+  outline:
+    2px solid #2d7b5d;
+
+  outline-offset: 3px;
+
+  border-radius: 12px;
+}
+
+
+.user-menu .user-chevron {
+  transition:
+    transform .22s ease;
+}
+
+
+.user-menu.cc-menu-open
+.user-chevron {
+  transform:
+    rotate(180deg);
+}
+
+
+.cc-shared-dropdown {
+  position: absolute;
+
+  top:
+    calc(100% + 13px);
+
+  right: 0;
+
+  z-index: 30000;
+
+  width: 305px;
+
+  padding: 11px;
+
+  border:
+    1px solid
+    rgba(217,230,221,.96);
+
+  border-radius: 17px;
+
+  background:
+    rgba(255,255,255,.98);
+
+  box-shadow:
+    0 25px 65px
+    rgba(19,65,48,.18);
+
+  backdrop-filter:
+    blur(22px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(22px)
+    saturate(145%);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateY(-7px)
+    scale(.98);
+
+  transform-origin:
+    top right;
+
+  transition:
+    opacity .2s ease,
+    visibility .2s ease,
+    transform .2s ease;
+}
+
+
+.cc-shared-dropdown.cc-open {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* =========================================================
+   ACCOUNT PROFILE
+========================================================= */
+
+.cc-account-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 9px;
+}
+
+
+.cc-account-avatar {
+  width: 45px;
+  height: 45px;
+
+  flex: 0 0 45px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+
+  color: #18513e;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e9f7d2,
+      #cde8ae
+    );
+
+  font-size: .76rem;
+
+  font-weight: 900;
+}
+
+
+.cc-account-profile
+> div:last-child {
+  min-width: 0;
+}
+
+
+.cc-account-profile strong {
+  display: block;
+
+  overflow: hidden;
+
+  margin-bottom: 3px;
+
+  color: #183d2f;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  font-size:
+    .875rem !important;
+}
+
+
+.cc-account-profile small {
+  display: block;
+
+  overflow: hidden;
+
+  color: #819087;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  font-size:
+    .75rem !important;
+}
+
+
+.cc-dropdown-divider {
+  height: 1px;
+
+  margin: 7px 4px;
+
+  background: #e8efea;
+}
+
+
+.cc-dropdown-link {
+  display: grid;
+
+  grid-template-columns:
+    35px 1fr auto;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-height: 55px;
+
+  padding: 7px 9px;
+
+  border-radius: 11px;
+
+  color: #214535;
+
+  text-decoration: none;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+
+.cc-dropdown-link:hover {
+  background: #eff7f1;
+
+  transform:
+    translateX(2px);
+}
+
+
+.cc-dropdown-link-icon {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #276f53;
+
+  background: #e6f4e9;
+}
+
+
+.cc-dropdown-link div {
+  min-width: 0;
+}
+
+
+.cc-dropdown-link strong {
+  display: block;
+
+  margin-bottom: 2px;
+
+  font-size:
+    .8125rem !important;
+}
+
+
+.cc-dropdown-link small {
+  display: block;
+
+  overflow: hidden;
+
+  color: #8b9991;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  font-size:
+    .6875rem !important;
+}
+
+
+.cc-dropdown-logout {
+  width: 100%;
+
+  min-height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 11px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: #a5524c;
+
+  background: transparent;
+
+  font-size:
+    .8125rem !important;
+
+  font-weight: 850;
+
+  text-align: left;
+}
+
+
+.cc-dropdown-logout:hover {
+  background: #fff0ed;
+}
+
+
+/* =========================================================
+   GLOBAL NOTIFICATIONS
+========================================================= */
+
+.cc-notification-dropdown {
+  right: 330px;
+
+  width: 355px;
+}
+
+
+.cc-notification-head {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 12px;
+
+  padding:
+    5px 5px 12px;
+}
+
+
+.cc-notification-head strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #183d2f;
+
+  font-size:
+    .875rem !important;
+}
+
+
+.cc-notification-head a {
+  color: #287154;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  font-size: .75rem;
+
+  font-weight: 850;
+}
+
+
+.cc-notification-list {
+  display: grid;
+
+  gap: 7px;
+
+  max-height: 330px;
+
+  overflow-y: auto;
+}
+
+
+.cc-notification-item {
+  display: grid;
+
+  grid-template-columns:
+    auto 1fr;
+
+  align-items: start;
+
+  gap: 10px;
+
+  padding: 11px;
+
+  border:
+    1px solid #e5eee8;
+
+  border-radius: 12px;
+
+  background: #f8fbf9;
+}
+
+
+.cc-notification-icon {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #926d1c;
+
+  background: #fbf1cf;
+
+  font-weight: 900;
+}
+
+
+.cc-notification-item.danger
+.cc-notification-icon {
+  color: #a74d48;
+
+  background: #ffebe8;
+}
+
+
+.cc-notification-item strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #214534;
+
+  font-size:
+    .8125rem !important;
+}
+
+
+.cc-notification-item p {
+  margin: 0;
+
+  color: #829087;
+
+  font-size:
+    .75rem !important;
+
+  line-height: 1.5;
+}
+
+
+.cc-notification-empty {
+  padding:
+    25px 12px;
+
+  text-align: center;
+
+  color: #829087;
+
+  font-size: .75rem;
+
+  line-height: 1.55;
+}
+
+
+.cc-notification-empty strong {
+  color: #244a38;
+}
+
+
+.notification-dot.cc-hidden {
+  display:
+    none !important;
+}
+
+
+/* =========================================================
+   PROFILE SEARCH
+========================================================= */
+
+.profile-page
+.profile-search-box {
+  position: relative;
+}
+
+
+.profile-page
+.profile-search-box input {
+  cursor:
+    text !important;
+}
+
+
+.cc-search-results {
+  position: absolute;
+
+  top:
+    calc(100% + 9px);
+
+  left: 0;
+  right: 0;
+
+  z-index: 25000;
+
+  display: none;
+
+  padding: 7px;
+
+  border:
+    1px solid #dde9e1;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,255,255,.98);
+
+  box-shadow:
+    0 20px 55px
+    rgba(22,67,50,.15);
+
+  backdrop-filter:
+    blur(20px);
+}
+
+
+.cc-search-results.cc-open {
+  display: block;
+}
+
+
+.cc-search-item {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    35px 1fr auto;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 9px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: #214535;
+
+  background: transparent;
+
+  text-align: left;
+}
+
+
+.cc-search-item:hover {
+  background: #eff7f1;
+}
+
+
+.cc-search-icon {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #267053;
+
+  background: #e5f4e8;
+}
+
+
+.cc-search-item strong {
+  display: block;
+
+  font-size:
+    .8125rem !important;
+}
+
+
+.cc-search-item small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #8a9990;
+
+  font-size:
+    .6875rem !important;
+}
+
+
+.cc-search-empty {
+  padding: 18px;
+
+  text-align: center;
+
+  color: #86958d;
+
+  font-size: .75rem;
+}
+
+
+/* =========================================================
+   PROFILE SIZE NORMALIZATION
+========================================================= */
+
+.profile-page
+.profile-content {
+  width: 100%;
+
+  max-width: none;
+}
+
+
+.profile-page
+.profile-panel,
+
+.profile-page
+.money-plan-card,
+
+.profile-page
+.profile-security-card {
+  padding: 24px;
+}
+
+
+.profile-page
+.profile-field > input,
+
+.profile-page
+.profile-field > select,
+
+.profile-page
+.profile-money-input {
+  min-height: 52px;
+}
+
+
+.profile-page
+.profile-money-input input {
+  min-height: 50px;
+}
+
+
+.profile-page
+.profile-quick-card {
+  min-height: 76px;
+}
+
+
+/* =========================================================
+   FINAL TYPOGRAPHY SYSTEM
+   REM units = A− / A / A+ scales student UI
+========================================================= */
+
+
+/* SIDEBAR */
+
+.sidebar-brand strong {
+  font-size:
+    1.0625rem !important;
+}
+
+
+.sidebar-brand span {
+  font-size:
+    .8125rem !important;
+}
+
+
+.sidebar .nav-item {
+  font-size:
+    .9375rem !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+.sidebar-message strong {
+  font-size:
+    .875rem !important;
+}
+
+
+.sidebar-message p {
+  font-size:
+    .75rem !important;
+
+  line-height:
+    1.5 !important;
+}
+
+
+.sidebar-logout {
+  font-size:
+    .875rem !important;
+}
+
+
+/* TOPBAR */
+
+.search-box input,
+.profile-search-box input {
+  font-size:
+    .875rem !important;
+}
+
+
+.search-box kbd {
+  font-size:
+    .6875rem !important;
+}
+
+
+.user-menu-copy strong {
+  font-size:
+    .875rem !important;
+}
+
+
+.user-menu-copy span {
+  font-size:
+    .75rem !important;
+}
+
+
+/* PAGE TITLES */
+
+.dashboard-content h1,
+
+.categories-heading h1,
+
+.profile-heading h1,
+
+.tips-heading h1,
+
+.budgets-heading h1,
+
+.saved-heading h1,
+
+.reports-heading h1,
+
+.transactions-heading h1 {
+  font-size:
+    clamp(
+      1.875rem,
+      3vw,
+      2.5rem
+    ) !important;
+
+  line-height:
+    1.1 !important;
+}
+
+
+/* PAGE INTRO */
+
+.categories-heading p,
+
+.profile-heading p,
+
+.tips-heading p,
+
+.budgets-heading p,
+
+.saved-heading p,
+
+.reports-heading p,
+
+.transactions-heading p {
+  font-size:
+    .875rem !important;
+
+  line-height:
+    1.6 !important;
+}
+
+
+/* BREADCRUMB */
+
+.dashboard-breadcrumb {
+  font-size:
+    .75rem !important;
+}
+
+
+/* SECTION LABEL */
+
+.section-kicker,
+.profile-eyebrow {
+  font-size:
+    .6875rem !important;
+
+  letter-spacing:
+    .07em !important;
+}
+
+
+/* CARD TITLES */
+
+.dashboard-content h2,
+
+.category-library h2,
+
+.profile-panel h2,
+
+.money-plan-card h2,
+
+.profile-security-card h2,
+
+.tips-section h2,
+
+.budgets-section h2,
+
+.saved-library h2,
+
+.analytics-card h2 {
+  font-size:
+    1.125rem !important;
+}
+
+
+.dashboard-content h3,
+
+.category-card h3,
+
+.tip-card h3,
+
+.saved-card h3 {
+  font-size:
+    1rem !important;
+}
+
+
+/* BODY TEXT */
+
+.dashboard-content p,
+
+.category-card-description,
+
+.category-info-banner p,
+
+.category-bottom-card p,
+
+.tip-card p,
+
+.saved-card p,
+
+.profile-security-card p,
+
+.budget-tip-card p,
+
+.analytics-card p {
+  font-size:
+    .875rem !important;
+
+  line-height:
+    1.55 !important;
+}
+
+
+/* LABELS */
+
+label,
+
+.field label,
+
+.profile-field label,
+
+.category-form-field label,
+
+.report-filter-field span {
+  font-size:
+    .8125rem !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+/* INPUTS */
+
+input,
+select,
+textarea {
+  font-size:
+    .875rem !important;
+}
+
+
+/* SMALL TEXT */
+
+small,
+
+.profile-field small,
+
+.category-card-name span,
+
+.category-lock-text,
+
+.budget-category span,
+
+.saved-card-meta span {
+  font-size:
+    .75rem !important;
+
+  line-height:
+    1.45 !important;
+}
+
+
+/* CATEGORY */
+
+.category-card-name strong {
+  font-size:
+    .9375rem !important;
+}
+
+
+.category-badge {
+  font-size:
+    .6875rem !important;
+}
+
+
+.category-summary-card span {
+  font-size:
+    .8125rem !important;
+}
+
+
+.category-summary-card strong {
+  font-size:
+    1.25rem !important;
+}
+
+
+.category-summary-card small {
+  font-size:
+    .75rem !important;
+}
+
+
+/* BUTTONS */
+
+button,
+
+.btn,
+
+.category-primary-button,
+
+.dashboard-add-button,
+
+.profile-submit-button,
+
+.profile-save-top,
+
+.analytics-apply-button {
+  font-size:
+    .8125rem !important;
+}
+
+
+/* TIPS */
+
+.tip-category span,
+
+.tip-impact,
+
+.tip-action {
+  font-size:
+    .75rem !important;
+}
+
+
+/* BUDGETS */
+
+.budget-category strong {
+  font-size:
+    .9375rem !important;
+}
+
+
+.budget-status {
+  font-size:
+    .6875rem !important;
+}
+
+
+.budget-progress-info span,
+
+.budget-card-footer span {
+  font-size:
+    .75rem !important;
+}
+
+
+/* SAVED */
+
+.saved-card-type span {
+  font-size:
+    .75rem !important;
+}
+
+
+.saved-type-badge {
+  font-size:
+    .6875rem !important;
+}
+
+
+.saved-open-button,
+
+.saved-remove-card-button {
+  font-size:
+    .75rem !important;
+}
+
+
+/* PROFILE */
+
+.profile-hero-copy h2 {
+  font-size:
+    1.375rem !important;
+}
+
+
+.profile-hero-copy p {
+  font-size:
+    .8125rem !important;
+}
+
+
+.money-plan-row span {
+  font-size:
+    .8125rem !important;
+}
+
+
+.money-plan-row strong {
+  font-size:
+    .875rem !important;
+}
+
+
+.security-row strong {
+  font-size:
+    .8125rem !important;
+}
+
+
+.security-row p {
+  font-size:
+    .75rem !important;
+}
+
+
+/* REPORTS */
+
+.analytics-summary-card
+span:not(
+  .analytics-summary-icon
+) {
+  font-size:
+    .75rem !important;
+}
+
+
+.analytics-summary-card strong {
+  font-size:
+    1.25rem !important;
+}
+
+
+.analytics-summary-card small {
+  font-size:
+    .6875rem !important;
+}
+
+
+.analytics-tab,
+
+.analytics-chip,
+
+.chart-legend,
+
+.month-label {
+  font-size:
+    .75rem !important;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark-theme
+.cc-font-controls {
+  border-color:
+    rgba(255,255,255,.08);
+
+  background:
+    rgba(18,39,29,.94);
+}
+
+
+.dark-theme
+.cc-font-button {
+  color: #a9b9b0;
+}
+
+
+.dark-theme
+.cc-font-button:hover {
+  color: #e8f0eb;
+
+  background:
+    rgba(255,255,255,.05);
+}
+
+
+.dark-theme
+.cc-font-button.cc-active {
+  color: #10271c;
+
+  background: #dff0c6;
+}
+
+
+.dark-theme
+.cc-shared-dropdown,
+
+.dark-theme
+.cc-search-results {
+  border-color:
+    rgba(255,255,255,.07);
+
+  background:
+    rgba(14,33,24,.98);
+
+  box-shadow:
+    0 25px 65px
+    rgba(0,0,0,.38);
+}
+
+
+.dark-theme
+.cc-account-profile strong,
+
+.dark-theme
+.cc-dropdown-link,
+
+.dark-theme
+.cc-notification-head strong,
+
+.dark-theme
+.cc-notification-item strong,
+
+.dark-theme
+.cc-notification-empty strong,
+
+.dark-theme
+.cc-search-item {
+  color: #e6efe9;
+}
+
+
+.dark-theme
+.cc-account-profile small,
+
+.dark-theme
+.cc-notification-item p,
+
+.dark-theme
+.cc-notification-empty,
+
+.dark-theme
+.cc-search-item small,
+
+.dark-theme
+.cc-search-empty {
+  color: #9aaaa0;
+}
+
+
+.dark-theme
+.cc-dropdown-divider {
+  background:
+    rgba(255,255,255,.06);
+}
+
+
+.dark-theme
+.cc-dropdown-link:hover,
+
+.dark-theme
+.cc-search-item:hover {
+  background:
+    rgba(255,255,255,.045);
+}
+
+
+.dark-theme
+.cc-notification-item {
+  border-color:
+    rgba(255,255,255,.06);
+
+  background:
+    rgba(255,255,255,.035);
+}
+
+
+.dark-theme
+.cc-dropdown-logout:hover {
+  background:
+    rgba(189,83,75,.10);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .cc-notification-dropdown {
+    right: 0;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .cc-shared-dropdown {
+    position: fixed;
+
+    top: 72px;
+
+    left: 10px;
+    right: 10px;
+
+    width: auto;
+
+    max-height:
+      calc(
+        100dvh - 90px
+      );
+
+    overflow-y: auto;
+
+    transform-origin:
+      top center;
+  }
+
+
+  .cc-notification-dropdown {
+    right: 10px;
+  }
+
+
+  .profile-page
+  .profile-panel,
+
+  .profile-page
+  .money-plan-card,
+
+  .profile-page
+  .profile-security-card {
+    padding: 17px;
+  }
+
+
+  .dashboard-content h1,
+
+  .categories-heading h1,
+
+  .profile-heading h1,
+
+  .tips-heading h1,
+
+  .budgets-heading h1,
+
+  .saved-heading h1,
+
+  .reports-heading h1,
+
+  .transactions-heading h1 {
+    font-size:
+      1.75rem !important;
+  }
+
+
+  .sidebar .nav-item {
+    font-size:
+      .9375rem !important;
+  }
+
+
+  input,
+  select,
+  textarea {
+    font-size:
+      max(
+        1rem,
+        16px
+      ) !important;
+  }
+
+
+  .cc-font-controls {
+    gap: 1px;
+
+    padding: 2px;
+  }
+
+
+  .cc-font-button {
+    min-width: 30px;
+
+    height: 32px;
+
+    padding-inline: 5px;
+  }
+
+}
+
+
+@media (max-width: 430px) {
+
+  .cc-font-controls {
+    order: -1;
+  }
+
+
+  .cc-font-button {
+    min-width: 28px;
+
+    padding-inline: 4px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .cc-shared-dropdown,
+
+  .cc-dropdown-link,
+
+  .cc-font-button,
+
+  .user-menu
+  .user-chevron {
+    transition:
+      none !important;
+  }
+
+}

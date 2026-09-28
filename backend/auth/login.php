@@ -10,6 +10,13 @@ $password = $data["password"] ?? "";
 $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($user && isset($user["is_active"]) && $user["is_active"] == 0) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Your account has been disabled"
+    ]);
+    exit;
+}
 
 if ($user && password_verify($password, $user["password_hash"])) {
     $_SESSION["user_id"] = $user["user_id"];

@@ -16,6 +16,24 @@ if (!$transaction_id) {
     exit;
 }
 
+$history = $pdo->prepare("
+    INSERT INTO transaction_history
+    (
+        transaction_id, user_id, category_id, amount,
+        type, description, txn_date, is_recurring, action_type
+    )
+    SELECT
+        transaction_id, user_id, category_id, amount,
+        type, description, txn_date, is_recurring, 'deleted'
+    FROM transactions
+    WHERE transaction_id = ? AND user_id = ?
+");
+
+$history->execute([
+    $transaction_id,
+    $_SESSION["user_id"]
+]);
+
 $stmt = $pdo->prepare("DELETE FROM transactions WHERE transaction_id = ? AND user_id = ?");
 $stmt->execute([$transaction_id, $_SESSION["user_id"]]);
 

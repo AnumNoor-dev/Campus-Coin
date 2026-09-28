@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Campus Coin | Admin Panel</title>
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
+</head>
+
+
+<body class="admin-app">
+
+
+<div class="admin-shell">
+
+
+  <!-- SIDEBAR -->
+
+  <aside
+    class="admin-sidebar"
+    id="adminSidebar"
+  >
+
+
+    <div class="admin-brand">
+
+      <div class="admin-brand-icon">
+        $
+      </div>
+
+
+      <div>
+
+        <strong>
+          Campus Coin
+        </strong>
+
+        <span>
+          Admin Control
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <nav class="admin-nav">
+
+
+      <button
+        type="button"
+        class="admin-nav-item active"
+        data-admin-page="overview"
+      >
+
+        <span>⌂</span>
+        Overview
+
+      </button>
+
+
+      <button
+        type="button"
+        class="admin-nav-item"
+        data-admin-page="users"
+      >
+
+        <span>○</span>
+        Users
+
+      </button>
+
+
+      <button
+        type="button"
+        class="admin-nav-item"
+        data-admin-page="categories"
+      >
+
+        <span>◫</span>
+        Default Categories
+
+      </button>
+
+
+      <button
+        type="button"
+        class="admin-nav-item"
+        data-admin-page="content"
+      >
+
+        <span>✦</span>
+        Content
+
+      </button>
+
+
+    </nav>
+
+
+
+    <div class="admin-sidebar-bottom">
+
+
+      <div class="admin-sidebar-note">
+
+        <span>◇</span>
+
+        <div>
+
+          <strong>
+            Admin workspace
+          </strong>
+
+          <p>
+            System-wide changes affect
+            Campus Coin students.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="dashboard.html"
+        class="admin-student-link"
+      >
+        ↗ Student App
+      </a>
+
+
+      <button
+        type="button"
+        class="admin-logout"
+        id="adminLogoutButton"
+      >
+        ↪ Logout
+      </button>
+
+
+    </div>
+
+
+  </aside>
+
+
+
+  <!-- MAIN -->
+
+  <main class="admin-main">
+
+
+    <!-- TOPBAR -->
+
+    <header class="admin-topbar">
+
+
+      <button
+        type="button"
+        class="admin-mobile-menu"
+        id="adminMobileMenu"
+        aria-label="Open admin menu"
+      >
+        ☰
+      </button>
+
+
+
+      <div class="admin-search">
+
+        <span>⌕</span>
+
+        <input
+          type="search"
+          id="adminSearch"
+          placeholder="Search current section..."
+        >
+
+        <kbd>Ctrl K</kbd>
+
+      </div>
+
+
+
+      <div class="admin-top-actions">
+
+
+        <div class="admin-font-controls">
+
+          <button
+            type="button"
+            id="adminFontDecrease"
+            title="Decrease text size"
+          >
+            A−
+          </button>
+
+
+          <button
+            type="button"
+            id="adminFontReset"
+            title="Reset text size"
+          >
+            A
+          </button>
+
+
+          <button
+            type="button"
+            id="adminFontIncrease"
+            title="Increase text size"
+          >
+            A+
+          </button>
+
+        </div>
+
+
+
+        <button
+          type="button"
+          class="admin-icon-button"
+          id="adminThemeToggle"
+          aria-label="Toggle dark mode"
+        >
+          ☼
+        </button>
+
+
+
+        <div class="admin-account-wrap">
+
+  <button
+    type="button"
+    class="admin-account"
+    id="adminAccountButton"
+    aria-expanded="false"
+  >
+
+    <div class="admin-account-avatar">
+      A
+    </div>
+
+    <span>
+      <strong>Administrator</strong>
+      <small>Campus Coin Admin</small>
+    </span>
+
+    <span class="admin-account-chevron">
+      ⌄
+    </span>
+
+  </button>
+
+
+  <div
+    class="admin-account-dropdown"
+    id="adminAccountDropdown"
+  >
+
+    <div class="admin-dropdown-profile">
+
+      <div>
+        A
+      </div>
+
+      <span>
+        <strong>Administrator</strong>
+        <small>admin@campuscoin.com</small>
+      </span>
+
+    </div>
+
+
+    <div class="admin-dropdown-divider"></div>
+
+
+    <button
+      type="button"
+      class="admin-dropdown-link"
+      data-account-page="overview"
+    >
+      <span>⌂</span>
+
+      <div>
+        <strong>Overview</strong>
+        <small>Admin dashboard</small>
+      </div>
+
+      <span>→</span>
+    </button>
+
+
+    <button
+      type="button"
+      class="admin-dropdown-link"
+      data-account-page="users"
+    >
+      <span>○</span>
+
+      <div>
+        <strong>Users</strong>
+        <small>Student account management</small>
+      </div>
+
+      <span>→</span>
+    </button>
+
+
+    <a
+      href="dashboard.html"
+      class="admin-dropdown-link"
+    >
+      <span>↗</span>
+
+      <div>
+        <strong>Student App</strong>
+        <small>Open Campus Coin dashboard</small>
+      </div>
+
+      <span>→</span>
+    </a>
+
+
+    <div class="admin-dropdown-divider"></div>
+
+
+    <button
+      type="button"
+      class="admin-dropdown-logout"
+      id="adminDropdownLogout"
+    >
+      <span>↪</span>
+      Logout
+    </button>
+
+  </div>
+
+
+
+
+      </div>
+
+
+    </header>
+
+
+
+    <div class="admin-content">
+
+
+      <!-- =================================================
+           OVERVIEW
+      ================================================== -->
+
+      <section
+        class="admin-page-section active"
+        data-page-section="overview"
+      >
+
+
+        <div class="admin-page-heading">
+
+          <div>
+
+            <span class="admin-breadcrumb">
+              Admin / Overview
+            </span>
+
+            <h1>
+              Platform overview
+              <span>◎</span>
+            </h1>
+
+            <p>
+              Review Campus Coin activity and jump
+              into the areas that need attention.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="admin-refresh-button"
+            id="refreshAdminData"
+          >
+            ↻ Refresh
+          </button>
+
+        </div>
+
+
+
+        <div class="admin-stat-grid">
+
+
+          <article class="admin-stat-card">
+
+            <span class="admin-stat-icon">
+              ○
+            </span>
+
+            <div>
+              <span>Total Users</span>
+
+              <strong id="adminTotalUsers">
+                —
+              </strong>
+            </div>
+
+            <small>
+              Registered student accounts
+            </small>
+
+          </article>
+
+
+
+          <article class="admin-stat-card">
+
+            <span class="admin-stat-icon transaction">
+              ↕
+            </span>
+
+            <div>
+              <span>Transactions</span>
+
+              <strong id="adminTotalTransactions">
+                —
+              </strong>
+            </div>
+
+            <small>
+              Total records logged
+            </small>
+
+          </article>
+
+
+
+          <article class="admin-stat-card">
+
+            <span class="admin-stat-icon active">
+              ✦
+            </span>
+
+            <div>
+              <span>Active This Month</span>
+
+              <strong id="adminActiveUsers">
+                —
+              </strong>
+            </div>
+
+            <small>
+              Users with monthly activity
+            </small>
+
+          </article>
+
+
+
+          <article class="admin-stat-card">
+
+            <span class="admin-stat-icon category">
+              ◫
+            </span>
+
+            <div>
+              <span>All Categories</span>
+
+              <strong id="adminTotalCategories">
+                —
+              </strong>
+            </div>
+
+            <small>
+              Default and personal
+            </small>
+
+          </article>
+
+
+        </div>
+
+
+
+        <div class="admin-overview-grid">
+
+
+          <article class="admin-panel admin-highlight-panel">
+
+            <span class="admin-section-kicker">
+              MOST USED CATEGORY
+            </span>
+
+            <h2 id="adminPopularCategory">
+              Loading...
+            </h2>
+
+            <p id="adminPopularCategoryText">
+              Checking transaction activity.
+            </p>
+
+
+            <button
+              type="button"
+              class="admin-link-button"
+              data-open-admin-page="categories"
+            >
+              Manage categories →
+            </button>
+
+          </article>
+
+
+
+          <article class="admin-panel">
+
+            <span class="admin-section-kicker">
+              QUICK ACTIONS
+            </span>
+
+            <h2>
+              Manage Campus Coin
+            </h2>
+
+
+            <div class="admin-quick-actions">
+
+
+              <button
+                type="button"
+                data-open-admin-page="users"
+              >
+                <span>○</span>
+
+                <div>
+                  <strong>Manage users</strong>
+                  <small>Account access and resets</small>
+                </div>
+
+                <span>→</span>
+              </button>
+
+
+              <button
+                type="button"
+                data-open-admin-page="categories"
+              >
+                <span>◫</span>
+
+                <div>
+                  <strong>Default categories</strong>
+                  <small>Shared student categories</small>
+                </div>
+
+                <span>→</span>
+              </button>
+
+
+              <button
+                type="button"
+                data-open-admin-page="content"
+              >
+                <span>✦</span>
+
+                <div>
+                  <strong>Announcements</strong>
+                  <small>System content and templates</small>
+                </div>
+
+                <span>→</span>
+              </button>
+
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =================================================
+           USERS
+      ================================================== -->
+
+      <section
+        class="admin-page-section"
+        data-page-section="users"
+      >
+
+
+        <div class="admin-page-heading">
+
+          <div>
+
+            <span class="admin-breadcrumb">
+              Admin / Users
+            </span>
+
+            <h1>
+              Student accounts
+              <span>○</span>
+            </h1>
+
+            <p>
+              View student profiles, control access
+              and reset passwords when required.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="admin-panel admin-table-panel">
+
+
+          <div class="admin-panel-head">
+
+            <div>
+
+              <span class="admin-section-kicker">
+                USER MANAGEMENT
+              </span>
+
+              <h2>
+                Registered students
+              </h2>
+
+            </div>
+
+
+            <span
+              class="admin-count-badge"
+              id="adminUserCount"
+            >
+              0 users
+            </span>
+
+          </div>
+
+
+
+          <div
+            class="admin-user-list"
+            id="adminUserList"
+          >
+
+            <div class="admin-loading">
+              <span></span>
+              Loading users...
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =================================================
+           DEFAULT CATEGORIES
+      ================================================== -->
+
+      <section
+        class="admin-page-section"
+        data-page-section="categories"
+      >
+
+
+        <div class="admin-page-heading">
+
+          <div>
+
+            <span class="admin-breadcrumb">
+              Admin / Default Categories
+            </span>
+
+            <h1>
+              System categories
+              <span>◫</span>
+            </h1>
+
+            <p>
+              These categories are available to
+              every Campus Coin student.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="admin-primary-button"
+            id="addDefaultCategoryButton"
+          >
+            + Add Category
+          </button>
+
+        </div>
+
+
+
+        <div class="admin-panel">
+
+
+          <div class="admin-panel-head">
+
+            <div>
+
+              <span class="admin-section-kicker">
+                SYSTEM DEFAULTS
+              </span>
+
+              <h2>
+                Income & expense categories
+              </h2>
+
+            </div>
+
+
+            <div class="admin-tab-filter">
+
+              <button
+                type="button"
+                class="active"
+                data-admin-category-filter="all"
+              >
+                All
+              </button>
+
+              <button
+                type="button"
+                data-admin-category-filter="expense"
+              >
+                Expense
+              </button>
+
+              <button
+                type="button"
+                data-admin-category-filter="income"
+              >
+                Income
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            class="admin-category-grid"
+            id="adminCategoryGrid"
+          >
+
+            <div class="admin-loading">
+              <span></span>
+              Loading categories...
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =================================================
+           CONTENT
+      ================================================== -->
+
+      <section
+        class="admin-page-section"
+        data-page-section="content"
+      >
+
+
+        <div class="admin-page-heading">
+
+          <div>
+
+            <span class="admin-breadcrumb">
+              Admin / Content
+            </span>
+
+            <h1>
+              System content
+              <span>✦</span>
+            </h1>
+
+            <p>
+              Create announcements and reusable
+              saving-tip templates.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="admin-primary-button"
+            id="addAdminContentButton"
+          >
+            + Add Content
+          </button>
+
+        </div>
+
+
+
+        <div class="admin-panel">
+
+
+          <div class="admin-panel-head">
+
+            <div>
+
+              <span class="admin-section-kicker">
+                CONTENT LIBRARY
+              </span>
+
+              <h2>
+                Announcements & tip templates
+              </h2>
+
+            </div>
+
+
+            <div class="admin-tab-filter">
+
+              <button
+                type="button"
+                class="active"
+                data-admin-content-filter="all"
+              >
+                All
+              </button>
+
+              <button
+                type="button"
+                data-admin-content-filter="announcement"
+              >
+                Announcements
+              </button>
+
+              <button
+                type="button"
+                data-admin-content-filter="tip_template"
+              >
+                Tips
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            class="admin-content-grid"
+            id="adminContentGrid"
+          >
+
+            <div class="admin-loading">
+              <span></span>
+              Loading content...
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+    </div>
+
+
+  </main>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     CATEGORY MODAL
+======================================================== -->
+
+<div
+  class="admin-modal-backdrop"
+  id="adminCategoryModal"
+>
+
+
+  <div class="admin-modal">
+
+
+    <div class="admin-modal-head">
+
+      <div>
+
+        <span class="admin-section-kicker">
+          DEFAULT CATEGORY
+        </span>
+
+        <h2 id="adminCategoryModalTitle">
+          Add category
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="admin-modal-close"
+        data-close-modal="adminCategoryModal"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+
+    <form id="adminCategoryForm">
+
+
+      <div class="admin-field">
+
+        <label for="adminCategoryName">
+          Category Name
+        </label>
+
+        <input
+          type="text"
+          id="adminCategoryName"
+          maxlength="150"
+          required
+        >
+
+      </div>
+
+
+      <div class="admin-field">
+
+        <label for="adminCategoryType">
+          Type
+        </label>
+
+        <select
+          id="adminCategoryType"
+          required
+        >
+          <option value="expense">
+            Expense
+          </option>
+
+          <option value="income">
+            Income
+          </option>
+        </select>
+
+      </div>
+
+
+      <div
+        class="admin-form-message"
+        id="adminCategoryMessage"
+      ></div>
+
+
+      <button
+        type="submit"
+        class="admin-modal-submit"
+        id="adminCategorySave"
+      >
+        Save Category
+      </button>
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     CONTENT MODAL
+======================================================== -->
+
+<div
+  class="admin-modal-backdrop"
+  id="adminContentModal"
+>
+
+
+  <div class="admin-modal">
+
+
+    <div class="admin-modal-head">
+
+      <div>
+
+        <span class="admin-section-kicker">
+          SYSTEM CONTENT
+        </span>
+
+        <h2 id="adminContentModalTitle">
+          Add content
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="admin-modal-close"
+        data-close-modal="adminContentModal"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+
+    <form id="adminContentForm">
+
+
+      <div
+        class="admin-field"
+        id="adminContentTypeField"
+      >
+
+        <label for="adminContentType">
+          Content Type
+        </label>
+
+        <select id="adminContentType">
+
+          <option value="announcement">
+            Announcement
+          </option>
+
+          <option value="tip_template">
+            Tip Template
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="admin-field">
+
+        <label for="adminContentTitle">
+          Title
+        </label>
+
+        <input
+          type="text"
+          id="adminContentTitle"
+          maxlength="150"
+          required
+        >
+
+      </div>
+
+
+      <div class="admin-field">
+
+        <label for="adminContentBody">
+          Content
+        </label>
+
+        <textarea
+          id="adminContentBody"
+          rows="5"
+          required
+        ></textarea>
+
+      </div>
+
+
+      <div
+        class="admin-form-message"
+        id="adminContentMessage"
+      ></div>
+
+
+      <button
+        type="submit"
+        class="admin-modal-submit"
+        id="adminContentSave"
+      >
+        Save Content
+      </button>
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     PASSWORD RESET MODAL
+======================================================== -->
+
+<div
+  class="admin-modal-backdrop"
+  id="adminPasswordModal"
+>
+
+
+  <div class="admin-modal admin-small-modal">
+
+
+    <div class="admin-modal-head">
+
+      <div>
+
+        <span class="admin-section-kicker">
+          USER SECURITY
+        </span>
+
+        <h2>
+          Reset password
+        </h2>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="admin-modal-close"
+        data-close-modal="adminPasswordModal"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <p class="admin-modal-description">
+
+      Set a temporary password for
+      <strong id="resetPasswordUserName">
+        this student
+      </strong>.
+
+    </p>
+
+
+    <form id="adminPasswordForm">
+
+
+      <div class="admin-field">
+
+        <label for="adminNewPassword">
+          New Password
+        </label>
+
+        <input
+          type="password"
+          id="adminNewPassword"
+          minlength="6"
+          required
+        >
+
+        <small>
+          Minimum 6 characters.
+        </small>
+
+      </div>
+
+
+      <div
+        class="admin-form-message"
+        id="adminPasswordMessage"
+      ></div>
+
+
+      <button
+        type="submit"
+        class="admin-modal-submit"
+      >
+        Reset Password
+      </button>
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     CONFIRM MODAL
+======================================================== -->
+
+<div
+  class="admin-modal-backdrop"
+  id="adminConfirmModal"
+>
+
+
+  <div class="admin-modal admin-confirm-modal">
+
+
+    <div class="admin-confirm-icon">
+      !
+    </div>
+
+
+    <h2 id="adminConfirmTitle">
+      Confirm action
+    </h2>
+
+
+    <p id="adminConfirmText">
+      Are you sure?
+    </p>
+
+
+    <div class="admin-confirm-actions">
+
+      <button
+        type="button"
+        class="admin-secondary-button"
+        data-close-modal="adminConfirmModal"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        type="button"
+        class="admin-danger-button"
+        id="adminConfirmAction"
+      >
+        Confirm
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<div
+  class="admin-toast"
+  id="adminToast"
+>
+  <span id="adminToastIcon">✓</span>
+
+  <strong id="adminToastText">
+    Updated
+  </strong>
+</div>
+
+
+<script src="js/admin.js"></script>
+
+<script src="js/admin-route.js"></script>
+
+
+</body>
+</html>
